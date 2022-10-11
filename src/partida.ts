@@ -6,12 +6,12 @@ class Partida {
         gols[1]= Math.floor(Math.random() * 4);
         
         
-        timeA.golsFeitos=gols[0];
-        timeA.golsRecebidos=gols[1];
+        // timeA.golsFeitos=gols[0];
+        // timeA.golsRecebidos=gols[1];
 
         
-        timeB.golsFeitos=gols[1];
-        timeB.golsRecebidos=gols[0];
+        // timeB.golsFeitos=gols[1];
+        // timeB.golsRecebidos=gols[0];
         
         if (gols[0]>gols[1]) 
         {
@@ -23,7 +23,7 @@ class Partida {
             timeA.fimDeJogo(0,gols[0],gols[1])
             timeB.fimDeJogo(3,gols[1],gols[0])
         }
-        else
+        else if (gols[0]==gols[1])
         {
             timeA.fimDeJogo(1,gols[0],gols[1])
             timeB.fimDeJogo(1,gols[1],gols[0])
