@@ -6,6 +6,8 @@ class Selecao{
         this._empates=0;
         this._derrotas=0;
         this._golsFeitos=0;
+        this._golsFeitosLastPartida=0;
+        this._golsRecebidosLastPartida=0;
         this._golsRecebidos=0;
         this._passouDeFase=false;
         this._token=token;
@@ -17,7 +19,9 @@ class Selecao{
     private _empates: number;    
     private _derrotas: number;    
     private _golsFeitos: number;    
+    public _golsFeitosLastPartida: number;
     private _golsRecebidos: number;    
+    public _golsRecebidosLastPartida: number;    
     private _passouDeFase: boolean;
 
 
@@ -32,7 +36,7 @@ class Selecao{
             default:
                 break;
         }
-        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos;
+        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido
     }
 
     public get nome():string {
@@ -82,7 +86,11 @@ class Selecao{
     public set golsRecebidos(value: number) {
         this._golsRecebidos += value;
     }
-
+    public get golsFeitoosLast(): number {
+        return this._golsFeitosLastPartidaLastPartida;
+    }public get golsRecebidosLast(): number {
+        return this._golsRecebidosLastPartidas;
+    }
     public get passouDeFase(): boolean {
         return this._passouDeFase;
     }

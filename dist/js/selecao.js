@@ -7,6 +7,8 @@ class Selecao {
         this._empates = 0;
         this._derrotas = 0;
         this._golsFeitos = 0;
+        this._golsFeitosLastPartida = 0;
+        this._golsRecebidosLastPartida = 0;
         this._golsRecebidos = 0;
         this._passouDeFase = false;
         this._token = token;
@@ -28,6 +30,8 @@ class Selecao {
         this.golsFeitos = golsFeito;
         this.golsRecebidos = golsSofrido;
         this.pontuacao = pontos;
+        this._golsFeitosLastPartida = golsFeito;
+        this._golsRecebidosLastPartida = golsSofrido;
     }
     get nome() {
         return this._nome;
@@ -70,6 +74,12 @@ class Selecao {
     }
     set golsRecebidos(value) {
         this._golsRecebidos += value;
+    }
+    get golsFeitoosLast() {
+        return this._golsFeitosLastPartidaLastPartida;
+    }
+    get golsRecebidosLast() {
+        return this._golsRecebidosLastPartidas;
     }
     get passouDeFase() {
         return this._passouDeFase;
