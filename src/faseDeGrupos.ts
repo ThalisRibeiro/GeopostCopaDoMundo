@@ -2,6 +2,7 @@ class FaseDeGrupos {
     constructor() {
     }
      _allTeams:Array<Selecao>=[];
+     _timesQuePassaram:Array<Selecao>=[];
     
     salvaTimes(nomes:string[], tokens:string[]){
         var time:Selecao= new Selecao;
@@ -47,6 +48,48 @@ class FaseDeGrupos {
             console.log('Nome '+index+': '+this._allTeams[index].nome);
             console.log('Token '+index+': '+this._allTeams[index].token);
         }
+    }
+
+    passaTimesDeFase()
+    {
+        // let z:number=0;
+        for (let index = 0; index < this._allTeams.length; index+4) {
+            var grupo:Array<Selecao> = new Array;
+            grupo[0]=this._allTeams[index];
+            grupo[1]=this._allTeams[index+1];
+            grupo[2]=this._allTeams[index+2];
+            grupo[3]=this._allTeams[index+3];
+            this.verificaColocacao(grupo);
+            //adicionando a lista dos times que vão para o mata mata
+            this._timesQuePassaram.push(grupo[0])
+            this._timesQuePassaram.push(grupo[1])
+            // this.proximaFase();
+        }
+    }
+
+    verificaColocacao(grupo:Array<Selecao>)
+    {
+        grupo = grupo.sort((x)=>x.pontuacao);
+        //verificando se não há empates na pontuação
+        for (let index = 0; index < grupo.length-1; index++) 
+        {
+            if (grupo[index].pontuacao == grupo[index+1].pontuacao)
+            {
+                if(grupo[index].vitorias>grupo[index+1].vitorias){
+                    break;
+                }    
+                else if (grupo[index+1].vitorias>grupo[index].vitorias) {
+                    var maior = grupo[index+1];
+                    grupo[index+1] = grupo[index];
+                    grupo[index] = maior;
+                }
+            }            
+        }
+
+    }
+    proximaFase()
+    {
+
     }
 }
 
