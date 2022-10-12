@@ -96,13 +96,16 @@ class FaseDeGrupos {
         // }
 
     }
-    // proximaFase()
-    // {
-    //     for (let index = 0; index < this._timesQuePassaram.length; index++) {
-    //         const element = this._timesQuePassaram[index];
+    proximaFase()
+    {
+        console.log('para proxima fase');
+        
+        for (let index = 0; index < this._timesQuePassaram.length; index++) {
+            console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
             
-    //     }
+            
+        }
 
-    // }
+    }
 }
 

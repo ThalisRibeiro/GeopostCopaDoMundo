@@ -50,10 +50,6 @@ class FaseDeGrupos {
             grupo.push(this._allTeams[index + 1]);
             grupo.push(this._allTeams[index + 2]);
             grupo.push(this._allTeams[index + 3]);
-            // grupo[0]=this._allTeams[index];            
-            // grupo[1]=this._allTeams[index+1];
-            // grupo[2]=this._allTeams[index+2];
-            // grupo[3]=this._allTeams[index+3];
             this.verificaColocacao(grupo);
             console.log('Campeao: ' + grupo[0].nome);
             console.log('Vice: ' + grupo[1].nome);
@@ -86,5 +82,9 @@ class FaseDeGrupos {
         // }
     }
     proximaFase() {
+        console.log('para proxima fase');
+        for (let index = 0; index < this._timesQuePassaram.length; index++) {
+            console.log('Equipe ' + index + ' ' + this._timesQuePassaram[index].nome);
+        }
     }
 }

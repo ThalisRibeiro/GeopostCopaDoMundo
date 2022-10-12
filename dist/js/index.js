@@ -16,6 +16,7 @@ async function load() {
     }
     salvaFaseGrupos(nomes, tokens);
     faseGrupos.jogos();
+    faseGrupos.proximaFase();
 }
 function salvaFaseGrupos(_names, _tokens) {
     faseGrupos.salvaTimes(_names, _tokens);
