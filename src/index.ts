@@ -1,4 +1,5 @@
 var teams;
+let oitavas:MataMata = new MataMata();
 let faseGrupos:FaseDeGrupos = new FaseDeGrupos();
 load();
 
@@ -17,8 +18,10 @@ async function load()
         console.log('Token '+index+': '+tokens[index]);
     }
     salvaFaseGrupos(nomes,tokens)
-    faseGrupos.jogos();
-    faseGrupos.proximaFase()
+    faseGrupos.jogos(); 
+    oitavas._allTeams=faseGrupos.proximaFase();
+    oitavas.jogos();
+    oitavas.proximaFase();
 }
 function salvaFaseGrupos(_names:string[], _tokens:string[]) {
     faseGrupos.salvaTimes(_names,_tokens)
