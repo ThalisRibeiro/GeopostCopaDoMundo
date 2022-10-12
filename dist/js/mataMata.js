@@ -3,6 +3,18 @@ class MataMata {
     constructor() {
         this._allTeams = new Array;
     }
+    //sempre que receber novos times, nao tera ligacao com as fases anteriores
+    set allTeams(selecoes) {
+        for (let i = 0; i < selecoes.length; i++) {
+            let nome = selecoes[i].nome;
+            let token = selecoes[i].nome;
+            let time = new Selecao(nome, token);
+            this._allTeams.push(time);
+        }
+    }
+    get allTeams() {
+        return this._allTeams;
+    }
     jogos() {
         console.log('entramos nas partidas das oitavas');
         var partidas = new Partida();
