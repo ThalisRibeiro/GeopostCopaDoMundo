@@ -25,6 +25,7 @@ class FaseDeGrupos {
             }
         }
         this.mostraSaldoGols();
+        this.passaTimesDeFase();
     }
     mostraSaldoGols() {
         for (let index = 0; index < this._allTeams.length; index++) {
@@ -40,35 +41,49 @@ class FaseDeGrupos {
         }
     }
     passaTimesDeFase() {
-        // let z:number=0;
-        for (let index = 0; index < this._allTeams.length; index + 4) {
-            var grupo = new Array;
-            grupo[0] = this._allTeams[index];
-            grupo[1] = this._allTeams[index + 1];
-            grupo[2] = this._allTeams[index + 2];
-            grupo[3] = this._allTeams[index + 3];
+        console.log('Times que passaram de fase:');
+        let z = 0;
+        var grupo;
+        for (let index = 0; index < 32; index += 4) {
+            grupo = new Array;
+            grupo.push(this._allTeams[index]);
+            grupo.push(this._allTeams[index + 1]);
+            grupo.push(this._allTeams[index + 2]);
+            grupo.push(this._allTeams[index + 3]);
+            // grupo[0]=this._allTeams[index];            
+            // grupo[1]=this._allTeams[index+1];
+            // grupo[2]=this._allTeams[index+2];
+            // grupo[3]=this._allTeams[index+3];
             this.verificaColocacao(grupo);
+            console.log('Campeao: ' + grupo[0].nome);
+            console.log('Vice: ' + grupo[1].nome);
             //adicionando a lista dos times que vão para o mata mata
             this._timesQuePassaram.push(grupo[0]);
             this._timesQuePassaram.push(grupo[1]);
             // this.proximaFase();
+            // console.log(grupo[z]+ ' ' + grupo[z+1]);
+            z += 2;
         }
     }
     verificaColocacao(grupo) {
-        grupo = grupo.sort((x) => x.pontuacao);
+        console.log("Entramos no Verifica Colocacao\nGrupo pre sorted: " + grupo[0].nome + " Pontos: " + grupo[0].pontuacao + " " + grupo[1].nome + " Pontos: " + grupo[1].pontuacao + " " + grupo[2].nome + " Pontos: " + grupo[2].pontuacao + " " + grupo[3].nome + " Pontos: " + grupo[3].pontuacao + " ");
+        grupo = grupo.sort((x, y) => y.pontuacao - x.pontuacao);
+        console.log("Grupo pos sorted: " + grupo[0].nome + " Pontos: " + grupo[0].pontuacao + " " + grupo[1].nome + " Pontos: " + grupo[1].pontuacao + " " + grupo[2].nome + " Pontos: " + grupo[2].pontuacao + " " + grupo[3].nome + " Pontos: " + grupo[3].pontuacao + " ");
         //verificando se não há empates na pontuação
-        for (let index = 0; index < grupo.length - 1; index++) {
-            if (grupo[index].pontuacao == grupo[index + 1].pontuacao) {
-                if (grupo[index].vitorias > grupo[index + 1].vitorias) {
-                    break;
-                }
-                else if (grupo[index + 1].vitorias > grupo[index].vitorias) {
-                    var maior = grupo[index + 1];
-                    grupo[index + 1] = grupo[index];
-                    grupo[index] = maior;
-                }
-            }
-        }
+        // for (let index = 0; index < 3; index++) 
+        // {
+        //     if (grupo[index].pontuacao == grupo[index+1].pontuacao)
+        //     {
+        //         if(grupo[index].vitorias>grupo[index+1].vitorias){
+        //             break;
+        //         }    
+        //         else if (grupo[index+1].vitorias>grupo[index].vitorias) {
+        //             var maior = grupo[index+1];
+        //             grupo[index+1] = grupo[index];
+        //             grupo[index] = maior;
+        //         }
+        //     }            
+        // }
     }
     proximaFase() {
     }
