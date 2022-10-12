@@ -34,22 +34,8 @@ class Selecao {
         this._golsFeitosLastPartida = golsFeito;
         this._golsRecebidosLastPartida = golsSofrido;
     }
-    fimDeJogoMata(pontos, golsFeito, golsSofrido, golsPenalti = 0) {
-        switch (pontos) {
-            case 3:
-                this.vitorias = 1;
-                this._passouDeFase = true;
-                break;
-            case 1:
-                this.empates = 1;
-                break;
-            case 0:
-                this.derrotas = 1;
-                this._passouDeFase = false;
-                break;
-            default:
-                break;
-        }
+    fimDeJogoMata(passou, golsFeito, golsSofrido, golsPenalti = 0) {
+        this.passouDeFase = passou;
         this.golsFeitos = golsFeito;
         this.golsRecebidos = golsSofrido;
         this._golsFeitosLastPartida = golsFeito;
