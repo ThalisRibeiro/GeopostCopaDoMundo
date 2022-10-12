@@ -27,12 +27,12 @@ class Partida {
         gols[0] = Math.floor(Math.random() * 4);
         gols[1] = Math.floor(Math.random() * 4);
         if (gols[0] > gols[1]) {
-            timeA.fimDeJogoMata(3, gols[0], gols[1]);
-            timeB.fimDeJogoMata(0, gols[1], gols[0]);
+            timeA.fimDeJogoMata(true, gols[0], gols[1]);
+            timeB.fimDeJogoMata(false, gols[1], gols[0]);
         }
         else if (gols[0] < gols[1]) {
-            timeA.fimDeJogoMata(0, gols[0], gols[1]);
-            timeB.fimDeJogoMata(3, gols[1], gols[0]);
+            timeA.fimDeJogoMata(false, gols[0], gols[1]);
+            timeB.fimDeJogoMata(true, gols[1], gols[0]);
         }
         else if (gols[0] == gols[1]) {
             //Penalti   
@@ -40,12 +40,12 @@ class Partida {
             golsP[0] = Math.floor(Math.random() * 10);
             golsP[1] = Math.floor(Math.random() * 10);
             if (golsP[0] < golsP[1]) {
-                timeA.fimDeJogoMata(0, gols[0], gols[1], golsP[0]);
-                timeB.fimDeJogoMata(3, gols[1], gols[0], golsP[1]);
+                timeA.fimDeJogoMata(false, gols[0], gols[1], golsP[0]);
+                timeB.fimDeJogoMata(true, gols[1], gols[0], golsP[1]);
             }
             else {
-                timeA.fimDeJogoMata(3, gols[0], gols[1], golsP[0]);
-                timeB.fimDeJogoMata(0, gols[1], gols[0], golsP[1]);
+                timeA.fimDeJogoMata(true, gols[0], gols[1], golsP[0]);
+                timeB.fimDeJogoMata(false, gols[1], gols[0], golsP[1]);
             }
         }
     }
