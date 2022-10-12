@@ -1,5 +1,11 @@
 var teams;
-let oitavas:MataMata = new MataMata();
+let oitavas:MataMata = new MataMata('oitavas');
+let quartas:MataMata = new MataMata('quartas');
+let semi:MataMata = new MataMata('semi');
+let finais:MataMata = new MataMata('finais');
+
+
+
 let faseGrupos:FaseDeGrupos = new FaseDeGrupos();
 load();
 
@@ -19,9 +25,14 @@ async function load()
     }
     salvaFaseGrupos(nomes,tokens)
     faseGrupos.jogos(); 
-    oitavas._allTeams=faseGrupos.proximaFase();
+    oitavas.allTeams= faseGrupos.proximaFase();
     oitavas.jogos();
-    oitavas.proximaFase();
+    quartas.allTeams= oitavas.proximaFase();
+    quartas.jogos();
+    semi.allTeams = quartas.proximaFase();
+    semi.jogos();
+    finais.allTeams = semi.proximaFase();
+    finais.jogos();
 }
 function salvaFaseGrupos(_names:string[], _tokens:string[]) {
     faseGrupos.salvaTimes(_names,_tokens)

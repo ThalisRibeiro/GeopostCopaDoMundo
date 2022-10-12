@@ -1,6 +1,9 @@
 "use strict";
 var teams;
-let oitavas = new MataMata();
+let oitavas = new MataMata('oitavas');
+let quartas = new MataMata('quartas');
+let semi = new MataMata('semi');
+let finais = new MataMata('finais');
 let faseGrupos = new FaseDeGrupos();
 load();
 async function load() {
@@ -17,9 +20,14 @@ async function load() {
     }
     salvaFaseGrupos(nomes, tokens);
     faseGrupos.jogos();
-    oitavas._allTeams = faseGrupos.proximaFase();
+    oitavas.allTeams = faseGrupos.proximaFase();
     oitavas.jogos();
-    oitavas.proximaFase();
+    quartas.allTeams = oitavas.proximaFase();
+    quartas.jogos();
+    semi.allTeams = quartas.proximaFase();
+    semi.jogos();
+    finais.allTeams = semi.proximaFase();
+    finais.jogos();
 }
 function salvaFaseGrupos(_names, _tokens) {
     faseGrupos.salvaTimes(_names, _tokens);
