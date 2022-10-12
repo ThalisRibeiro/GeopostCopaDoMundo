@@ -14,7 +14,27 @@ class Selecao {
         this._passouDeFase = false;
         this._token = token;
     }
-    fimDeJogo(pontos, golsFeito, golsSofrido, golsPenalti = 0) {
+    fimDeJogo(pontos, golsFeito, golsSofrido) {
+        switch (pontos) {
+            case 3:
+                this.vitorias = 1;
+                break;
+            case 1:
+                this.empates = 1;
+                break;
+            case 0:
+                this.derrotas = 1;
+                break;
+            default:
+                break;
+        }
+        this.golsFeitos = golsFeito;
+        this.golsRecebidos = golsSofrido;
+        this.pontuacao = pontos;
+        this._golsFeitosLastPartida = golsFeito;
+        this._golsRecebidosLastPartida = golsSofrido;
+    }
+    fimDeJogoMata(pontos, golsFeito, golsSofrido, golsPenalti = 0) {
         switch (pontos) {
             case 3:
                 this.vitorias = 1;
@@ -32,7 +52,6 @@ class Selecao {
         }
         this.golsFeitos = golsFeito;
         this.golsRecebidos = golsSofrido;
-        this.pontuacao = pontos;
         this._golsFeitosLastPartida = golsFeito;
         this._golsRecebidosLastPartida = golsSofrido;
         this._golsPenalti = golsPenalti;
