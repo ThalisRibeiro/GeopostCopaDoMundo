@@ -109,5 +109,6 @@ class FaseDeGrupos {
             // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
             console.log(confrontos[index].nome + ' x ' + confrontos[index + 1].nome);
         }
+        return confrontos;
     }
 }

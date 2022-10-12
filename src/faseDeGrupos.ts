@@ -63,22 +63,24 @@ class FaseDeGrupos {
             grupo.push(this._allTeams[index+2]);
             grupo.push(this._allTeams[index+3]);
             this.verificaColocacao(grupo);
-            console.log('Campeao: '+grupo[0].nome);
-            console.log('Vice: '+grupo[1].nome);
+            console.log('Campeao do grupo '+z+': '+grupo[0].nome);
+            console.log('Vice do grupo '+z+': '+grupo[1].nome);
             //adicionando a lista dos times que vão para o mata mata
             this._timesQuePassaram.push(grupo[0])
             this._timesQuePassaram.push(grupo[1])
             // this.proximaFase();
             // console.log(grupo[z]+ ' ' + grupo[z+1]);
-            z+=2;            
+            z+=1;            
         }
     }
 
     verificaColocacao(grupo:Array<Selecao>)
     {
-        console.log("Entramos no Verifica Colocacao\nGrupo pre sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
+        // console.log("Entramos no Verifica Colocacao\nGrupo pre sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
+        
         grupo = grupo.sort((x,y)=>y.pontuacao - x.pontuacao);
-        console.log("Grupo pos sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
+        
+        // console.log("Grupo pos sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
         //verificando se não há empates na pontuação
         // for (let index = 0; index < 3; index++) 
         // {
@@ -96,16 +98,38 @@ class FaseDeGrupos {
         // }
 
     }
-    proximaFase()
-    {
-        console.log('para proxima fase');
-        
+    proximaFase():Array<Selecao>
+    {let confrontos:Array<Selecao> = new Array<Selecao>;
+        console.log('para proxima fase');       
+        let z:number=0;
+
+        //teremos 2 loops,1 pro lado esquerdo e outro pro lado direito da tabela
         for (let index = 0; index < this._timesQuePassaram.length; index++) {
-            console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
-            
-            
+            // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
+            confrontos.push(this._timesQuePassaram[index]);
+            z+=1;
+            index+=3;
+            confrontos.push(this._timesQuePassaram[index]);
+            z+=1;            
         }
 
+        //loop lado direito da tabela
+        for (let index = 2; index < this._timesQuePassaram.length; index++) {
+            // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
+            confrontos.push(this._timesQuePassaram[index]);
+            confrontos.push(this._timesQuePassaram[index-1]);
+            z+=1;
+            z+=1;
+            index+=3;     
+        }
+        console.log("Partidas do mata mata");
+        
+        //teste se deu certo
+        for (let index = 0; index < confrontos.length; index+=2) {
+            // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
+            console.log(confrontos[index].nome+' x '+confrontos[index+1].nome);
+        }
+        return confrontos;
     }
 }
 
