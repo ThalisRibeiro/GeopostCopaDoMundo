@@ -9,6 +9,7 @@ class Selecao{
         this._golsFeitosLastPartida=0;
         this._golsRecebidosLastPartida=0;
         this._golsRecebidos=0;
+        this._golsPenalti=0;
         this._passouDeFase=false;
         this._token=token;
     }
@@ -23,22 +24,24 @@ class Selecao{
     private _golsRecebidos: number;    
     public _golsRecebidosLastPartida: number;    
     private _passouDeFase: boolean;
+    private _golsPenalti: number;
 
-
-    fimDeJogo(pontos:number, golsFeito:number, golsSofrido:number){
+    fimDeJogo(pontos:number, golsFeito:number, golsSofrido:number, golsPenalti:number=0){
         switch (pontos) {
-            case 3: this.vitorias=1;
+            case 3: this.vitorias=1; this._passouDeFase=true;
                 break;
             case 1: this.empates=1;
                 break;
-            case 0: this.derrotas=1;
+            case 0: this.derrotas=1; this._passouDeFase=false;
                 break;
             default:
                 break;
         }
-        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido
+        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido; this._golsPenalti = golsPenalti;
     }
-
+    public get golsPenalti():number{
+        return this._golsPenalti;
+    }
     public get nome():string {
         return this._nome;
     }
