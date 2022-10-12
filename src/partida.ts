@@ -37,13 +37,13 @@ class Partida {
         
         if (gols[0]>gols[1]) 
         {
-            timeA.fimDeJogo(3,gols[0],gols[1])
-            timeB.fimDeJogo(0,gols[1],gols[0])
+            timeA.fimDeJogoMata(3,gols[0],gols[1])
+            timeB.fimDeJogoMata(0,gols[1],gols[0])
         }
         else if(gols[0]<gols[1])
         {
-            timeA.fimDeJogo(0,gols[0],gols[1])
-            timeB.fimDeJogo(3,gols[1],gols[0])
+            timeA.fimDeJogoMata(0,gols[0],gols[1])
+            timeB.fimDeJogoMata(3,gols[1],gols[0])
         }
         else if (gols[0]==gols[1])
         {
@@ -54,13 +54,13 @@ class Partida {
             
             if(golsP[0]<golsP[1])
             {
-                timeA.fimDeJogo(0,gols[0],gols[1],golsP[0])
-                timeB.fimDeJogo(3,gols[1],gols[0],golsP[1])
+                timeA.fimDeJogoMata(0,gols[0],gols[1],golsP[0])
+                timeB.fimDeJogoMata(3,gols[1],gols[0],golsP[1])
             }
             else   
             {
-                timeA.fimDeJogo(3,gols[0],gols[1],golsP[0])
-                timeB.fimDeJogo(0,gols[1],gols[0],golsP[1])
+                timeA.fimDeJogoMata(3,gols[0],gols[1],golsP[0])
+                timeB.fimDeJogoMata(0,gols[1],gols[0],golsP[1])
             }
         }
 
