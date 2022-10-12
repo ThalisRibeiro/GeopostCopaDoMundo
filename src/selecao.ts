@@ -86,11 +86,6 @@ class Selecao{
     public set golsRecebidos(value: number) {
         this._golsRecebidos += value;
     }
-    public get golsFeitoosLast(): number {
-        return this._golsFeitosLastPartidaLastPartida;
-    }public get golsRecebidosLast(): number {
-        return this._golsRecebidosLastPartidas;
-    }
     public get passouDeFase(): boolean {
         return this._passouDeFase;
     }
