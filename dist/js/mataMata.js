@@ -8,7 +8,13 @@ class MataMata {
         for (let i = 0; i < selecoes.length; i++) {
             let nome = selecoes[i].nome;
             let token = selecoes[i].nome;
-            let time = new Selecao(nome, token);
+            let vitorias = selecoes[i].vitorias;
+            let pontos = selecoes[i].pontuacao;
+            let empates = selecoes[i].empates;
+            let derrotas = selecoes[i].derrotas;
+            let golsFeito = selecoes[i].golsFeitos;
+            let golsRecebidos = selecoes[i].golsRecebidos;
+            let time = new Selecao(nome, token, vitorias, pontos, empates, derrotas, golsFeito, golsRecebidos);
             this._allTeams.push(time);
         }
     }

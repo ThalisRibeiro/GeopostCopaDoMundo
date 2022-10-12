@@ -1,15 +1,15 @@
 "use strict";
 class Selecao {
-    constructor(nome = "", token = "") {
+    constructor(nome = "", token = "", vitorias = 0, pontuacao = 0, empates = 0, derrotas = 0, gFeitos = 0, gRecebidos = 0) {
         this._nome = nome;
-        this._vitorias = 0;
-        this._pontuacao = 0;
-        this._empates = 0;
-        this._derrotas = 0;
-        this._golsFeitos = 0;
+        this._vitorias = vitorias;
+        this._pontuacao = pontuacao;
+        this._empates = empates;
+        this._derrotas = derrotas;
+        this._golsFeitos = gFeitos;
         this._golsFeitosLastPartida = 0;
         this._golsRecebidosLastPartida = 0;
-        this._golsRecebidos = 0;
+        this._golsRecebidos = gRecebidos;
         this._golsPenalti = 0;
         this._passouDeFase = false;
         this._token = token;
@@ -36,6 +36,10 @@ class Selecao {
     }
     fimDeJogoMata(passou, golsFeito, golsSofrido, golsPenalti = 0) {
         this.passouDeFase = passou;
+        if (passou == true)
+            this.vitorias = 1;
+        else
+            this.derrotas = 1;
         this.golsFeitos = golsFeito;
         this.golsRecebidos = golsSofrido;
         this._golsFeitosLastPartida = golsFeito;

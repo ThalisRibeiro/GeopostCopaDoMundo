@@ -1,14 +1,14 @@
 class Selecao{
-    constructor(nome:string = "",token:string = ""){
+    constructor(nome:string = "",token:string = "",vitorias:number=0,pontuacao:number=0,empates:number=0,derrotas:number=0,gFeitos:number=0,gRecebidos:number=0){
         this._nome = nome;
-        this._vitorias=0;
-        this._pontuacao=0;
-        this._empates=0;
-        this._derrotas=0;
-        this._golsFeitos=0;
+        this._vitorias=vitorias;
+        this._pontuacao=pontuacao;
+        this._empates=empates;
+        this._derrotas=derrotas;
+        this._golsFeitos=gFeitos;
         this._golsFeitosLastPartida=0;
         this._golsRecebidosLastPartida=0;
-        this._golsRecebidos=0;
+        this._golsRecebidos=gRecebidos;
         this._golsPenalti=0;
         this._passouDeFase=false;
         this._token=token;
@@ -41,6 +41,12 @@ class Selecao{
     }
     fimDeJogoMata(passou:boolean, golsFeito:number, golsSofrido:number, golsPenalti:number=0){
         this.passouDeFase=passou;
+        if(passou==true)
+            this.vitorias=1;
+        
+        else
+            this.derrotas=1;
+
         this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido; this._golsPenalti = golsPenalti;
     }
     public get golsPenalti():number{
