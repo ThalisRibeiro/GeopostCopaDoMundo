@@ -1,9 +1,10 @@
 class MataMata {
-    constructor() {
+    constructor(fase:string) {
+        this._fase=fase;
     }
 
     private _allTeams:Array<Selecao> = new Array<Selecao>;
-
+    private _fase:string;
     //sempre que receber novos times, nao tera ligacao com as fases anteriores
     public set allTeams(selecoes:Array<Selecao>){
         for(let i = 0;i<selecoes.length;i++){
@@ -23,7 +24,7 @@ class MataMata {
         return this._allTeams;
     }
     jogos(){
-        console.log('entramos nas partidas das oitavas');
+        console.log('entramos nas partidas das '+this._fase);
         
         var partidas:Partida = new Partida();
         for (let index = 0; index < this._allTeams.length; index+=2) 

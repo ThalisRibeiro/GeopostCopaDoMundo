@@ -1,7 +1,8 @@
 "use strict";
 class MataMata {
-    constructor() {
+    constructor(fase) {
         this._allTeams = new Array;
+        this._fase = fase;
     }
     //sempre que receber novos times, nao tera ligacao com as fases anteriores
     set allTeams(selecoes) {
@@ -22,7 +23,7 @@ class MataMata {
         return this._allTeams;
     }
     jogos() {
-        console.log('entramos nas partidas das oitavas');
+        console.log('entramos nas partidas das ' + this._fase);
         var partidas = new Partida();
         for (let index = 0; index < this._allTeams.length; index += 2) {
             partidas.RodaPartidaMata(this._allTeams[index], this._allTeams[index + 1]);
