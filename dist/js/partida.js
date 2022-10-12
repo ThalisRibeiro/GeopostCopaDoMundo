@@ -22,4 +22,31 @@ class Partida {
             timeB.fimDeJogo(1, gols[1], gols[0]);
         }
     }
+    RodaPartidaMata(timeA, timeB) {
+        var gols = [2];
+        gols[0] = Math.floor(Math.random() * 4);
+        gols[1] = Math.floor(Math.random() * 4);
+        if (gols[0] > gols[1]) {
+            timeA.fimDeJogo(3, gols[0], gols[1]);
+            timeB.fimDeJogo(0, gols[1], gols[0]);
+        }
+        else if (gols[0] < gols[1]) {
+            timeA.fimDeJogo(0, gols[0], gols[1]);
+            timeB.fimDeJogo(3, gols[1], gols[0]);
+        }
+        else if (gols[0] == gols[1]) {
+            //Penalti   
+            var golsP = [2];
+            golsP[0] = Math.floor(Math.random() * 10);
+            golsP[1] = Math.floor(Math.random() * 10);
+            if (golsP[0] < golsP[1]) {
+                timeA.fimDeJogo(0, gols[0], gols[1], golsP[0]);
+                timeB.fimDeJogo(3, gols[1], gols[0], golsP[1]);
+            }
+            else {
+                timeA.fimDeJogo(3, gols[0], gols[1], golsP[0]);
+                timeB.fimDeJogo(0, gols[1], gols[0], golsP[1]);
+            }
+        }
+    }
 }
