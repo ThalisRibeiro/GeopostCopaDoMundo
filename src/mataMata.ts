@@ -24,13 +24,15 @@ class MataMata {
         return this._allTeams;
     }
     jogos(){
-        console.log('entramos nas partidas das '+this._fase);
-        
+        console.log('entramos nas partidas das '+this._fase);        
+        // const historicoJogos = document.querySelector('.HistoricoDeJogos')as HTMLVideoElement;
+        // historicoJogos.innerHTML+=`<div class=${this._fase} id=${this._fase}> </div>`; 
         var partidas:Partida = new Partida();
         for (let index = 0; index < this._allTeams.length; index+=2) 
         {
             partidas.RodaPartidaMata(this._allTeams[index],this._allTeams[index+1]);   
-            console.log(this._allTeams[index].nome+' gols = '+this._allTeams[index]._golsFeitosLastPartida + ' '+this._allTeams[index+1].nome+' gols = '+this._allTeams[index+1]._golsFeitosLastPartida);       
+            console.log(this._allTeams[index].nome+' gols = '+this._allTeams[index]._golsFeitosLastPartida + ' '+this._allTeams[index+1].nome+' gols = '+this._allTeams[index+1]._golsFeitosLastPartida);      
+            this.MostraHistoricoPartida(index,index+1) 
         }
         
         // this.mostraSaldoGols();
@@ -50,5 +52,24 @@ class MataMata {
             }
         }
         return ganharam;
+    }
+    MostraHistoricoPartida(i:number, x:number){
+        let historicoFase;
+        switch (this._fase) {
+            case 'oitavas': historicoFase = document.querySelector(".HistoricoMataMataOit")as HTMLVideoElement; 
+                break;
+                
+            case 'quartas':historicoFase = document.querySelector(".HistoricoMataMataQua")as HTMLVideoElement; 
+                break;
+            case 'semi':historicoFase = document.querySelector(".HistoricoMataMataSemi")as HTMLVideoElement; 
+                break;
+                case 'finais':historicoFase = document.querySelector(".HistoricoMataMataFin")as HTMLVideoElement; 
+                break;
+        
+            default: historicoFase = document.querySelector(".HistoricoMataMataFin")as HTMLVideoElement; 
+                break;
+        }
+        
+        historicoFase.innerHTML+=`<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`
     }
 }

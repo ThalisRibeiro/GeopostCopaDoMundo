@@ -24,10 +24,13 @@ class MataMata {
     }
     jogos() {
         console.log('entramos nas partidas das ' + this._fase);
+        // const historicoJogos = document.querySelector('.HistoricoDeJogos')as HTMLVideoElement;
+        // historicoJogos.innerHTML+=`<div class=${this._fase} id=${this._fase}> </div>`; 
         var partidas = new Partida();
         for (let index = 0; index < this._allTeams.length; index += 2) {
             partidas.RodaPartidaMata(this._allTeams[index], this._allTeams[index + 1]);
             console.log(this._allTeams[index].nome + ' gols = ' + this._allTeams[index]._golsFeitosLastPartida + ' ' + this._allTeams[index + 1].nome + ' gols = ' + this._allTeams[index + 1]._golsFeitosLastPartida);
+            this.MostraHistoricoPartida(index, index + 1);
         }
         // this.mostraSaldoGols();
         // this.passaTimesDeFase();
@@ -43,5 +46,26 @@ class MataMata {
             }
         }
         return ganharam;
+    }
+    MostraHistoricoPartida(i, x) {
+        let historicoFase;
+        switch (this._fase) {
+            case 'oitavas':
+                historicoFase = document.querySelector(".HistoricoMataMataOit");
+                break;
+            case 'quartas':
+                historicoFase = document.querySelector(".HistoricoMataMataQua");
+                break;
+            case 'semi':
+                historicoFase = document.querySelector(".HistoricoMataMataSemi");
+                break;
+            case 'finais':
+                historicoFase = document.querySelector(".HistoricoMataMataFin");
+                break;
+            default:
+                historicoFase = document.querySelector(".HistoricoMataMataFin");
+                break;
+        }
+        historicoFase.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
     }
 }
