@@ -51,6 +51,7 @@ function rodaAllGames() {
     semi.jogos();
     finais.allTeams = semi.proximaFase();
     finais.jogos();
+    enviaFim();
 }
 function rodaNewGame() {
     apagaAllProgress();
@@ -61,4 +62,9 @@ function apagaAllProgress() {
     faseGrupos.apagaProgresso();
     faseGrupos.apagaHistorico();
     faseGrupos.apagaTabela();
+}
+function enviaFim() {
+    let dados = new dadosFinais(finais.allTeams[0].token, finais.allTeams[1].token, finais.allTeams[0]._golsFeitosLastPartida, finais.allTeams[1]._golsFeitosLastPartida, finais.allTeams[0].golsPenalti, finais.allTeams[1].golsPenalti);
+    let saidaJson = JSON.stringify(dados);
+    console.log(saidaJson);
 }
