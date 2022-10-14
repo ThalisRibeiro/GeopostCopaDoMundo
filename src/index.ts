@@ -3,18 +3,16 @@ let oitavas:MataMata = new MataMata('oitavas');
 let quartas:MataMata = new MataMata('quartas');
 let semi:MataMata = new MataMata('semi');
 let finais:MataMata = new MataMata('finais');
-
-
-
 let faseGrupos:FaseDeGrupos = new FaseDeGrupos();
+
+    
+let nomes:string[] = new Array;
+var tokens:string[] = new Array;
 load();
 
 async function load() 
 {
     teams = await fetchTeams();
-    
-    let nomes:string[] = new Array;
-    var tokens:string[] = new Array;
     console.log(teams);
     for(let index = 0; index<32;index++){
         // console.log('Nome '+index+': '+teams[index].Name);
@@ -24,6 +22,30 @@ async function load()
         console.log('Token '+index+': '+tokens[index]);
     }
     salvaFaseGrupos(nomes,tokens)
+    rodaAllGames();
+    // faseGrupos.jogos(); 
+    // oitavas.allTeams= faseGrupos.proximaFase();
+    // oitavas.jogos();
+    // quartas.allTeams= oitavas.proximaFase();
+    // quartas.jogos();
+    // semi.allTeams = quartas.proximaFase();
+    // semi.jogos();
+    // finais.allTeams = semi.proximaFase();
+    // finais.jogos();
+}
+function salvaFaseGrupos(_names:string[], _tokens:string[]) {
+    faseGrupos.salvaTimes(_names,_tokens);
+    // shuffleArray(faseGrupos._allTeams);
+}
+
+function shuffleArray(array:Array<Selecao>) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+function rodaAllGames() {
+    shuffleArray(faseGrupos._allTeams);
     faseGrupos.jogos(); 
     oitavas.allTeams= faseGrupos.proximaFase();
     oitavas.jogos();
@@ -34,20 +56,13 @@ async function load()
     finais.allTeams = semi.proximaFase();
     finais.jogos();
 }
-function salvaFaseGrupos(_names:string[], _tokens:string[]) {
-    faseGrupos.salvaTimes(_names,_tokens)
-    
+function rodaNewGame() {
+    apagaAllProgress();
+    salvaFaseGrupos(nomes,tokens)
+    rodaAllGames();
 }
-// faseGrupos.mostraTodosTimes();
-// function loop(){
-//     for(let index = 0; index<32;index++){
-//         console.log('Nome '+index+': '+teams[0].Name);
-        
-//     }
-//}
-// var teamsRandom = teams.sort(() => Math.random() - 0.5)
-// for (let index = 0; index < teams.length; index++) {
-    
-//     // console.log(teamsRandom[index].Name);
-    
-// }
+function apagaAllProgress(){
+    faseGrupos.apagaProgresso();
+    faseGrupos.apagaHistorico();
+    faseGrupos.apagaTabela();
+}
