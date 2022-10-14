@@ -12,6 +12,7 @@ class Selecao{
         this._golsPenalti=0;
         this._passouDeFase=false;
         this._token=token;
+        this._saldoGols = this.golsFeitos-this.golsRecebidos;
     }
     private _nome: string;
     private _token:string;
@@ -25,7 +26,7 @@ class Selecao{
     public _golsRecebidosLastPartida: number;    
     private _passouDeFase: boolean;
     private _golsPenalti: number;
-
+    private _saldoGols: number;
     fimDeJogo(pontos:number, golsFeito:number, golsSofrido:number){
         switch (pontos) {
             case 3: this.vitorias=1;
@@ -37,7 +38,8 @@ class Selecao{
             default:
                 break;
         }
-        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido
+        this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido;
+        this.setSaldoGols()
     }
     fimDeJogoMata(passou:boolean, golsFeito:number, golsSofrido:number, golsPenalti:number=0){
         this.passouDeFase=passou;
@@ -48,6 +50,12 @@ class Selecao{
             this.derrotas=1;
 
         this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido; this._golsPenalti = golsPenalti;
+    }
+    private setSaldoGols(){
+        this._saldoGols=this.golsFeitos-this.golsRecebidos;
+    }
+    public get saldoGols(){
+        return this._saldoGols;
     }
     public get golsPenalti():number{
         return this._golsPenalti;

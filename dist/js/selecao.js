@@ -13,6 +13,7 @@ class Selecao {
         this._golsPenalti = 0;
         this._passouDeFase = false;
         this._token = token;
+        this._saldoGols = this.golsFeitos - this.golsRecebidos;
     }
     fimDeJogo(pontos, golsFeito, golsSofrido) {
         switch (pontos) {
@@ -33,6 +34,7 @@ class Selecao {
         this.pontuacao = pontos;
         this._golsFeitosLastPartida = golsFeito;
         this._golsRecebidosLastPartida = golsSofrido;
+        this.setSaldoGols();
     }
     fimDeJogoMata(passou, golsFeito, golsSofrido, golsPenalti = 0) {
         this.passouDeFase = passou;
@@ -45,6 +47,12 @@ class Selecao {
         this._golsFeitosLastPartida = golsFeito;
         this._golsRecebidosLastPartida = golsSofrido;
         this._golsPenalti = golsPenalti;
+    }
+    setSaldoGols() {
+        this._saldoGols = this.golsFeitos - this.golsRecebidos;
+    }
+    get saldoGols() {
+        return this._saldoGols;
     }
     get golsPenalti() {
         return this._golsPenalti;
