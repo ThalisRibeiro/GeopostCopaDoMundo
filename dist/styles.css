@@ -19,20 +19,22 @@ h2{
     margin: 10;
 }
 thead{
-    background-color: darkgrey;
+    background-color: #660066;
 }
 .Grupos,table,th,td{
     /* float: left; */
     font-family: Arial, Helvetica, sans-serif;
     width: 400px;
+    color: white;
     border: 1px solid black;
     border-collapse: collapse;
+    background-color: #660099;
 }
 td{
     text-align: center;
 }
 .Passou{
-    background-color: #7FFF00	;
+    background-color: purple	;
 }
 .HistoricoGrupos,.HistoricoGrupos2,.HistoricoMataMataOit,.HistoricoMataMataQua,.HistoricoMataMataSemi,.HistoricoMataMataFin{
     text-align: center;
@@ -116,5 +118,5 @@ td{
 }
 p{
     font-size: large;
-    color: #e672d5;
+    color: white;
 }
