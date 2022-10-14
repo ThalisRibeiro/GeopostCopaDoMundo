@@ -9,6 +9,7 @@ class FaseDeGrupos {
     }
     salvaTimes(nomes, tokens) {
         var time = new Selecao;
+        this._allTeams = new Array;
         console.log("Chegamos em SalvaTimes");
         for (let index = 0; index < nomes.length; index++) {
             console.log("Nome " + index + ": ");
@@ -16,6 +17,7 @@ class FaseDeGrupos {
             console.log(time.nome);
             this._allTeams.push(time);
         }
+        console.log(this._allTeams);
     }
     jogos() {
         var partidas = new Partida();
@@ -99,6 +101,7 @@ class FaseDeGrupos {
     }
     passaTimesDeFase() {
         console.log('Times que passaram de fase:');
+        this._timesQuePassaram = new Array;
         let z = 0;
         var grupo;
         for (let index = 0; index < 32; index += 4) {
@@ -188,5 +191,36 @@ class FaseDeGrupos {
                 proxima.innerHTML += `<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
             }
         }
+    }
+    apagaProgresso() {
+        let proxima = document.querySelector('.OitavasLeft');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.OitavasRight');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.QuartasLeft');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.QuartasRight');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.SemiLeft');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.SemiRight');
+        proxima.innerHTML = "";
+        proxima = document.querySelector('.Finais');
+        proxima.innerHTML = "";
+    }
+    apagaHistorico() {
+        console.log("Apagando historico?");
+        let historicoGrupos = document.querySelector('.HistoricoGrupos');
+        historicoGrupos.innerHTML = "<h2> Fase de Grupos</h2>";
+        historicoGrupos = document.querySelector('.HistoricoGrupos2');
+        historicoGrupos.innerHTML = "<h2> </h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataOit');
+        historicoGrupos.innerHTML = "<h2> Oitavas</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataQua');
+        historicoGrupos.innerHTML = "<h2> Quartas</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataSemi');
+        historicoGrupos.innerHTML = "<h2> Semi finais</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataFin');
+        historicoGrupos.innerHTML = "<h2> Final</h2>";
     }
 }

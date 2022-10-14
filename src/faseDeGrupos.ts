@@ -9,6 +9,7 @@ class FaseDeGrupos {
 
     salvaTimes(nomes:string[], tokens:string[]){
         var time:Selecao= new Selecao;
+        this._allTeams= new Array<Selecao>;
         console.log("Chegamos em SalvaTimes");
         
         for (let index = 0; index < nomes.length; index++) {
@@ -19,6 +20,7 @@ class FaseDeGrupos {
             
             this._allTeams.push(time);
         }
+        console.log(this._allTeams);
     }
 
     jogos(){
@@ -112,6 +114,7 @@ class FaseDeGrupos {
     passaTimesDeFase()
     {
         console.log('Times que passaram de fase:');
+        this._timesQuePassaram = new Array<Selecao>;
          let z:number=0;
          var grupo:Array<Selecao>;
         for (let index = 0; index < 32; index+=4) {
@@ -213,6 +216,40 @@ class FaseDeGrupos {
                 proxima.innerHTML+=`<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
             }
         }
+    }
+    apagaProgresso(){
+        let proxima = document.querySelector('.OitavasLeft')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        proxima = document.querySelector('.OitavasRight')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        
+        proxima = document.querySelector('.QuartasLeft')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        proxima = document.querySelector('.QuartasRight')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        
+        proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        proxima = document.querySelector('.Finais')as HTMLVideoElement; 
+        proxima.innerHTML= "";
+        
+    }
+    apagaHistorico(){
+        console.log("Apagando historico?")
+        let historicoGrupos = document.querySelector('.HistoricoGrupos')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> Fase de Grupos</h2>";
+        historicoGrupos = document.querySelector('.HistoricoGrupos2')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> </h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataOit')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> Oitavas</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataQua')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> Quartas</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataSemi')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> Semi finais</h2>";
+        historicoGrupos = document.querySelector('.HistoricoMataMataFin')as HTMLVideoElement;
+        historicoGrupos.innerHTML="<h2> Final</h2>";
     }
 }
 
