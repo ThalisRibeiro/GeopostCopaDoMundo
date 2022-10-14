@@ -91,7 +91,10 @@ class FaseDeGrupos {
         }
     }
     MostraHistoricoPartida(i, x) {
-        const historicoGrupos = document.querySelector('.HistoricoGrupos');
+        let historicoGrupos = document.querySelector('.HistoricoGrupos');
+        if (i > 14) {
+            historicoGrupos = document.querySelector('.HistoricoGrupos2');
+        }
         historicoGrupos.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
     }
     passaTimesDeFase() {

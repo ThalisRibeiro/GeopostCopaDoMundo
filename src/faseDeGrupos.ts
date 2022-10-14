@@ -102,7 +102,10 @@ class FaseDeGrupos {
         
     }
     MostraHistoricoPartida(i:number, x:number){
-        const historicoGrupos = document.querySelector('.HistoricoGrupos')as HTMLVideoElement; 
+        let historicoGrupos = document.querySelector('.HistoricoGrupos')as HTMLVideoElement;
+        if (i>14) {
+            historicoGrupos = document.querySelector('.HistoricoGrupos2')as HTMLVideoElement;
+        } 
         historicoGrupos.innerHTML+=`<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`
     }
 
