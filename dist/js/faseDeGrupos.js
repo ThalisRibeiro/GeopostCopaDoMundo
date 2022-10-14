@@ -24,6 +24,7 @@ class FaseDeGrupos {
                 for (let x = i + 1; x < index + 4; x++) {
                     partidas.RodaPartida(this._allTeams[i], this._allTeams[x]);
                     console.log(this._allTeams[i].nome + ' gols = ' + this._allTeams[i]._golsFeitosLastPartida + ' ' + this._allTeams[x].nome + ' gols = ' + this._allTeams[x]._golsFeitosLastPartida);
+                    this.MostraHistoricoPartida(i, x);
                 }
             }
         }
@@ -88,6 +89,10 @@ class FaseDeGrupos {
             console.log('Nome ' + index + ': ' + this._allTeams[index].nome);
             console.log('Token ' + index + ': ' + this._allTeams[index].token);
         }
+    }
+    MostraHistoricoPartida(i, x) {
+        const historicoGrupos = document.querySelector('.HistoricoGrupos');
+        historicoGrupos.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
     }
     passaTimesDeFase() {
         console.log('Times que passaram de fase:');

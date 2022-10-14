@@ -33,3 +33,9 @@ td{
 .Passou{
     background-color: #7FFF00	;
 }
+.HistoricoGrupos{
+    display: inline-block;
+    text-align: center;
+    border: 3px solid black;
+    width: 300px;
+}
