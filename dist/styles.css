@@ -49,14 +49,16 @@ td{
      width: 1400px;
      height: 700px;
      background-image:url("../src/qatar.png");
-    background-position: 40px ;
-    background-size: 100% ;
+    /* background-position: 40px ; */
+    background-position-x: -50px;
+    background-position-y: -60px;
+    background-size: 110% ;
 }
 
 .OitavasLeft{
     float: left;
     width: 150px;
-    margin-left: 330px;
+    margin-left: 280px;
     margin-top: 70px;
 }
 .OitavasRight{
@@ -68,39 +70,42 @@ td{
 
 .QuartasLeft{
     float: left;
-    width: 130px;
+    width: 160px;
     margin-left: 0px;
-    margin-top: 160px;
+    margin-top: 140px;
     margin-bottom: 160px;
 }
 .QuartasRight{
     float: left;
     width: 130px;
-    margin-top: 160px;
+    margin-top: 140px;
     margin-bottom: 160px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 .SemiLeft,.SemiRight{
     float: left;
-    width: 80px;
+    width: 100px;
     margin-left: 0px;
     margin-top: 300px;
     margin-bottom: 160px;
 }
 .SegundoTime{
-    margin-bottom: 80px;
+    margin-bottom: 90px;
 }
 .SegundoTimeQuarta{
-    margin-bottom: 180px;
+    margin-bottom: 240px;
+}
+.SegundoTimeSemi{
+    margin-bottom: 200px;
 }
 p{
-    font-size: larger;
+    font-size: large;
     color: #e672d5;
 }
 .Finais{
     
     float: left;
     width: 90px;
-    margin-top: 140px;
+    margin-top: 120px;
     /* margin-bottom: 160px; */
 }
