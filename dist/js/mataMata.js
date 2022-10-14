@@ -116,7 +116,7 @@ class MataMata {
                 proxima.innerHTML += `<p> ${confrontos[index].nome}</p>`;
             }
             else {
-                proxima.innerHTML += `<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
+                proxima.innerHTML += `<p class="SegundoTimeSemi"> ${confrontos[index].nome}</p>`;
             }
         }
     }
