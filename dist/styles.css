@@ -1,5 +1,5 @@
 body{
-    background-color: white;
+    background-color: #690081;
 }
 h2{
     text-align: center;
@@ -22,6 +22,7 @@ thead{
     background-color: darkgrey;
 }
 .Grupos,table,th,td{
+    /* float: left; */
     font-family: Arial, Helvetica, sans-serif;
     width: 400px;
     border: 1px solid black;
@@ -38,4 +39,68 @@ td{
     border: 3px solid black;
     width: 300px;       
     float:left;
+}
+.Principal{
+    display: block;
+}
+.Imagem{
+    float: right;
+    margin-top: 150px;
+     width: 1400px;
+     height: 700px;
+     background-image:url("../src/qatar.png");
+    background-position: 40px ;
+    background-size: 100% ;
+}
+
+.OitavasLeft{
+    float: left;
+    width: 150px;
+    margin-left: 330px;
+    margin-top: 70px;
+}
+.OitavasRight{
+    float: right;
+    width: 150px;
+    margin-right: 180px;
+    margin-top: 70px;
+}
+
+.QuartasLeft{
+    float: left;
+    width: 130px;
+    margin-left: 0px;
+    margin-top: 160px;
+    margin-bottom: 160px;
+}
+.QuartasRight{
+    float: left;
+    width: 130px;
+    margin-top: 160px;
+    margin-bottom: 160px;
+    margin-left: 50px;
+}
+.SemiLeft,.SemiRight{
+    float: left;
+    width: 80px;
+    margin-left: 0px;
+    margin-top: 300px;
+    margin-bottom: 160px;
+}
+.SegundoTime{
+    margin-bottom: 80px;
+}
+.SegundoTimeQuarta{
+    margin-bottom: 180px;
+}
+p{
+    font-size: larger;
+    color: #e672d5;
+}
+.Finais{
+    
+    float: left;
+    width: 90px;
+    margin-top: 140px;
+    /* margin-bottom: 160px; */
 }
