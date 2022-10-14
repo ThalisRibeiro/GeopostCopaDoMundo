@@ -9,7 +9,7 @@ class MataMata {
         this._allTeams = new Array;
         for (let i = 0; i < selecoes.length; i++) {
             let nome = selecoes[i].nome;
-            let token = selecoes[i].nome;
+            let token = selecoes[i].token;
             let vitorias = selecoes[i].vitorias;
             let pontos = selecoes[i].pontuacao;
             let empates = selecoes[i].empates;
