@@ -51,6 +51,7 @@ class MataMata {
                 console.log(this._allTeams[index]);
             }
         }
+        this.mostraProximaFase(ganharam)
         return ganharam;
     }
     MostraHistoricoPartida(i:number, x:number){
@@ -72,4 +73,63 @@ class MataMata {
         
         historicoFase.innerHTML+=`<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`
     }
+    mostraProximaFase(confrontos:Array<Selecao>){
+        switch (this._fase) {
+            case 'oitavas':  this.escreveQuartas(confrontos)
+                break;
+                
+            case 'quartas': this.escreveSemi(confrontos)
+                break;
+            case 'semi': this.escreveFinais(confrontos)
+                break;
+                case 'finais':
+                break;
+        
+            default: 
+                break;
+        }
+        
+    }
+    escreveQuartas(confrontos:Array<Selecao>){
+        for (let index = 0; index < confrontos.length; index++) {
+            let proxima;
+            if (index<confrontos.length/2) {
+                proxima = document.querySelector('.QuartasLeft')as HTMLVideoElement; 
+            }
+            else{
+                proxima = document.querySelector('.QuartasRight')as HTMLVideoElement; 
+            }
+            if ((index%2)==0) {
+                proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
+            }
+            else{
+                proxima.innerHTML+=`<p class="SegundoTimeQuarta"> ${confrontos[index].nome}</p>`;
+            }
+        }
+    }
+
+    escreveSemi(confrontos:Array<Selecao>){
+        for (let index = 0; index < confrontos.length; index++) {
+            let proxima;
+            if (index<confrontos.length/2) {
+                proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
+            }
+            else{
+                proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
+            }
+            if ((index%2)==0) {
+                proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
+            }
+            else{
+                proxima.innerHTML+=`<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
+            }
+        }
+    }
+    escreveFinais(confrontos:Array<Selecao>){
+            let proxima;
+            proxima = document.querySelector('.Finais')as HTMLVideoElement; 
+            proxima.innerHTML+=`<p> ${confrontos[0].nome} ${confrontos[1].nome}   </p>`;   
+    }
+    
+        
 }
