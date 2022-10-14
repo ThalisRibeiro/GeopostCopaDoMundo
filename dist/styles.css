@@ -45,14 +45,23 @@ td{
 }
 .Imagem{
     float: right;
+    /* display: inline-block; */
     margin-top: 150px;
      width: 1400px;
      height: 700px;
+     margin-right: 0;
      background-image:url("../src/qatar.png");
     /* background-position: 40px ; */
     background-position-x: -50px;
     background-position-y: -60px;
     background-size: 110% ;
+}
+.Controles{
+    /* float: right; */
+    /* height: 10px; */
+    display: inline-block;
+    width: 300px;
+    background-color: antiquewhite;
 }
 
 .OitavasLeft{
@@ -98,14 +107,14 @@ td{
 .SegundoTimeSemi{
     margin-bottom: 200px;
 }
-p{
-    font-size: large;
-    color: #e672d5;
-}
 .Finais{
     
     float: left;
     width: 90px;
     margin-top: 120px;
     /* margin-bottom: 160px; */
+}
+p{
+    font-size: large;
+    color: #e672d5;
 }
