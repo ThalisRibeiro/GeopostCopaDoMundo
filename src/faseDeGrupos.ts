@@ -62,7 +62,7 @@ class FaseDeGrupos {
                     <tr>
                     <th>Nome</th>
                     <th>Vitorias</th>
-                    <th>Gols</th>
+                    <th>Saldo de Gols</th>
                     <th>Pontos</th>
                     </tr>
             </thead>
@@ -70,26 +70,26 @@ class FaseDeGrupos {
                     <tr>
                         <td>${this._timesColocacao[index].nome}</td> 
                         <td>${this._timesColocacao[index].vitorias}</td>
-                        <td>${this._timesColocacao[index].golsFeitos}</td>
+                        <td>${this._timesColocacao[index].saldoGols}</td>
                         <td>${this._timesColocacao[index].pontuacao}</td>   
                     </tr>
                     <tr>
                         <td>${this._timesColocacao[index+1].nome}</td> 
                         <td>${this._timesColocacao[index+1].vitorias}</td>
-                        <td>${this._timesColocacao[index+1].golsFeitos}</td>
+                        <td>${this._timesColocacao[index+1].saldoGols}</td>
                         <td>${this._timesColocacao[index+1].pontuacao}</td>   
                     </tr>
                     
                     <tr>
                         <td>${this._timesColocacao[index+2].nome}</td> 
                         <td>${this._timesColocacao[index+2].vitorias}</td>
-                        <td>${this._timesColocacao[index+2].golsFeitos}</td>
+                        <td>${this._timesColocacao[index+2].saldoGols}</td>
                         <td>${this._timesColocacao[index+2].pontuacao}</td>   
                     </tr>
                     <tr>
                         <td>${this._timesColocacao[index+3].nome}</td> 
                         <td>${this._timesColocacao[index+3].vitorias}</td>
-                        <td>${this._timesColocacao[index+3].golsFeitos}</td>
+                        <td>${this._timesColocacao[index+3].saldoGols}</td>
                         <td>${this._timesColocacao[index+3].pontuacao}</td>   
                     </tr>
                 </tbody>
@@ -142,10 +142,10 @@ class FaseDeGrupos {
         // {
         //     if (grupo[index].pontuacao == grupo[index+1].pontuacao)
         //     {
-        //         if(grupo[index].golsFeitos>grupo[index+1].golsFeitos){
+        //         if(grupo[index].saldoGols>grupo[index+1].saldoGols){
         //             break;
         //         }    
-        //         else if (grupo[index+1].golsFeitos>grupo[index].golsFeitos) {
+        //         else if (grupo[index+1].saldoGols>grupo[index].saldoGols) {
         //             var maior = grupo[index+1];
         //             grupo[index+1] = grupo[index];
         //             grupo[index] = maior;
