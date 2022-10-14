@@ -137,21 +137,21 @@ class FaseDeGrupos {
         grupo = grupo.sort((x,y)=>y.pontuacao - x.pontuacao);
         
         // console.log("Grupo pos sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
-        // // verificando se não há empates na pontuação
-        // for (let index = 0; index < 3; index++) 
-        // {
-        //     if (grupo[index].pontuacao == grupo[index+1].pontuacao)
-        //     {
-        //         if(grupo[index].saldoGols>grupo[index+1].saldoGols){
-        //             break;
-        //         }    
-        //         else if (grupo[index+1].saldoGols>grupo[index].saldoGols) {
-        //             var maior = grupo[index+1];
-        //             grupo[index+1] = grupo[index];
-        //             grupo[index] = maior;
-        //         }
-        //     }            
-        // }
+        // verificando se não há empates na pontuação
+        for (let index = 0; index < 3; index++) 
+        {
+            if (grupo[index].pontuacao == grupo[index+1].pontuacao)
+            {
+                if(grupo[index].saldoGols>grupo[index+1].saldoGols){
+                    break;
+                }    
+                else if (grupo[index+1].saldoGols>grupo[index].saldoGols) {
+                    var maior = grupo[index+1];
+                    grupo[index+1] = grupo[index];
+                    grupo[index] = maior;
+                }
+            }            
+        }
 
     }
     proximaFase():Array<Selecao>
