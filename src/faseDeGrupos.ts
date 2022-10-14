@@ -9,6 +9,7 @@ class FaseDeGrupos {
 
     salvaTimes(nomes:string[], tokens:string[]){
         var time:Selecao= new Selecao;
+        this._timesColocacao = new Array<Selecao>;
         this._allTeams= new Array<Selecao>;
         console.log("Chegamos em SalvaTimes");
         
@@ -250,6 +251,10 @@ class FaseDeGrupos {
         historicoGrupos.innerHTML="<h2> Semi finais</h2>";
         historicoGrupos = document.querySelector('.HistoricoMataMataFin')as HTMLVideoElement;
         historicoGrupos.innerHTML="<h2> Final</h2>";
+    }
+    apagaTabela(){
+        const divGrupos = document.querySelector('.FaseDeGrupos')as HTMLVideoElement; 
+            divGrupos.innerHTML=`<h2>FASE DE GRUPOS</h2>`;
     }
 }
 
