@@ -33,9 +33,9 @@ td{
 .Passou{
     background-color: #7FFF00	;
 }
-.HistoricoGrupos{
-    display: inline-block;
+.HistoricoGrupos,.HistoricoGrupos2,.HistoricoMataMataOit,.HistoricoMataMataQua,.HistoricoMataMataSemi,.HistoricoMataMataFin{
     text-align: center;
     border: 3px solid black;
-    width: 300px;
+    width: 300px;       
+    float:left;
 }
