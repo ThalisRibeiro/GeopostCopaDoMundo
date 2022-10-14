@@ -58,16 +58,16 @@ class FaseDeGrupos {
             </thead>
                 <tbody>
                     <tr>
-                        <td>${this._timesColocacao[index].nome}</td> 
-                        <td>${this._timesColocacao[index].vitorias}</td>
-                        <td>${this._timesColocacao[index].saldoGols}</td>
-                        <td>${this._timesColocacao[index].pontuacao}</td>   
+                        <td class="Passou">${this._timesColocacao[index].nome}</td> 
+                        <td class="Passou">${this._timesColocacao[index].vitorias}</td>
+                        <td class="Passou">${this._timesColocacao[index].saldoGols}</td>
+                        <td class="Passou">${this._timesColocacao[index].pontuacao}</td>   
                     </tr>
                     <tr>
-                        <td>${this._timesColocacao[index + 1].nome}</td> 
-                        <td>${this._timesColocacao[index + 1].vitorias}</td>
-                        <td>${this._timesColocacao[index + 1].saldoGols}</td>
-                        <td>${this._timesColocacao[index + 1].pontuacao}</td>   
+                        <td class="Passou">${this._timesColocacao[index + 1].nome}</td> 
+                        <td class="Passou">${this._timesColocacao[index + 1].vitorias}</td>
+                        <td class="Passou">${this._timesColocacao[index + 1].saldoGols}</td>
+                        <td class="Passou">${this._timesColocacao[index + 1].pontuacao}</td>   
                     </tr>
                     
                     <tr>
