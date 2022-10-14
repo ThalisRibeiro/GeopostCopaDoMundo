@@ -169,6 +169,24 @@ class FaseDeGrupos {
             console.log(confrontos[index].nome + ' x ' + confrontos[index + 1].nome);
         }
         this.mostraTodosTimes();
+        this.mostraProximaFase(confrontos);
         return confrontos;
+    }
+    mostraProximaFase(confrontos) {
+        for (let index = 0; index < confrontos.length; index++) {
+            let proxima;
+            if (index < confrontos.length / 2) {
+                proxima = document.querySelector('.OitavasLeft');
+            }
+            else {
+                proxima = document.querySelector('.OitavasRight');
+            }
+            if ((index % 2) == 0) {
+                proxima.innerHTML += `<p> ${confrontos[index].nome}</p>`;
+            }
+            else {
+                proxima.innerHTML += `<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
+            }
+        }
     }
 }
