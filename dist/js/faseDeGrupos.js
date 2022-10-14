@@ -3,6 +3,9 @@ class FaseDeGrupos {
     constructor() {
         this._allTeams = [];
         this._timesQuePassaram = [];
+        this._timesColocacao = [];
+        this._alfabeto = [];
+        this._alfabeto.push('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
     }
     salvaTimes(nomes, tokens) {
         var time = new Selecao;
@@ -34,8 +37,54 @@ class FaseDeGrupos {
         }
     }
     mostraTodosTimes() {
-        console.log("Times na fase de grupo: ");
-        for (let index = 0; index < 32; index++) {
+        // console.log("Times na fase de grupo: ");
+        // for(let index = 0; index<32;index++){         
+        //     console.log('Nome '+index+': '+this._allTeams[index].nome);
+        //     console.log('Token '+index+': '+this._allTeams[index].token);
+        // }
+        let z = 0;
+        for (let index = 0; index < 29; index += 4) {
+            const divGrupos = document.querySelector('.FaseDeGrupos');
+            divGrupos.innerHTML += `
+            <h3 class="NomeGrupo"> GRUPO ${this._alfabeto[z]} </h3>
+            <table> 
+                <thead> 
+                    <tr>
+                    <th>Nome</th>
+                    <th>Vitorias</th>
+                    <th>Gols</th>
+                    <th>Pontos</th>
+                    </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td>${this._timesColocacao[index].nome}</td> 
+                        <td>${this._timesColocacao[index].vitorias}</td>
+                        <td>${this._timesColocacao[index].golsFeitos}</td>
+                        <td>${this._timesColocacao[index].pontuacao}</td>   
+                    </tr>
+                    <tr>
+                        <td>${this._timesColocacao[index + 1].nome}</td> 
+                        <td>${this._timesColocacao[index + 1].vitorias}</td>
+                        <td>${this._timesColocacao[index + 1].golsFeitos}</td>
+                        <td>${this._timesColocacao[index + 1].pontuacao}</td>   
+                    </tr>
+                    
+                    <tr>
+                        <td>${this._timesColocacao[index + 2].nome}</td> 
+                        <td>${this._timesColocacao[index + 2].vitorias}</td>
+                        <td>${this._timesColocacao[index + 2].golsFeitos}</td>
+                        <td>${this._timesColocacao[index + 2].pontuacao}</td>   
+                    </tr>
+                    <tr>
+                        <td>${this._timesColocacao[index + 3].nome}</td> 
+                        <td>${this._timesColocacao[index + 3].vitorias}</td>
+                        <td>${this._timesColocacao[index + 3].golsFeitos}</td>
+                        <td>${this._timesColocacao[index + 3].pontuacao}</td>   
+                    </tr>
+                </tbody>
+            </table>`;
+            z += 1;
             console.log('Nome ' + index + ': ' + this._allTeams[index].nome);
             console.log('Token ' + index + ': ' + this._allTeams[index].token);
         }
@@ -56,6 +105,10 @@ class FaseDeGrupos {
             //adicionando a lista dos times que vão para o mata mata
             this._timesQuePassaram.push(grupo[0]);
             this._timesQuePassaram.push(grupo[1]);
+            this._timesColocacao.push(grupo[0]);
+            this._timesColocacao.push(grupo[1]);
+            this._timesColocacao.push(grupo[2]);
+            this._timesColocacao.push(grupo[3]);
             // this.proximaFase();
             // console.log(grupo[z]+ ' ' + grupo[z+1]);
             z += 1;
@@ -65,15 +118,15 @@ class FaseDeGrupos {
         // console.log("Entramos no Verifica Colocacao\nGrupo pre sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
         grupo = grupo.sort((x, y) => y.pontuacao - x.pontuacao);
         // console.log("Grupo pos sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
-        //verificando se não há empates na pontuação
+        // // verificando se não há empates na pontuação
         // for (let index = 0; index < 3; index++) 
         // {
         //     if (grupo[index].pontuacao == grupo[index+1].pontuacao)
         //     {
-        //         if(grupo[index].vitorias>grupo[index+1].vitorias){
+        //         if(grupo[index].golsFeitos>grupo[index+1].golsFeitos){
         //             break;
         //         }    
-        //         else if (grupo[index+1].vitorias>grupo[index].vitorias) {
+        //         else if (grupo[index+1].golsFeitos>grupo[index].golsFeitos) {
         //             var maior = grupo[index+1];
         //             grupo[index+1] = grupo[index];
         //             grupo[index] = maior;
@@ -109,6 +162,7 @@ class FaseDeGrupos {
             // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
             console.log(confrontos[index].nome + ' x ' + confrontos[index + 1].nome);
         }
+        this.mostraTodosTimes();
         return confrontos;
     }
 }
