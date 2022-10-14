@@ -6,6 +6,7 @@ class MataMata {
     }
     //sempre que receber novos times, nao tera ligacao com as fases anteriores
     set allTeams(selecoes) {
+        this._allTeams = new Array;
         for (let i = 0; i < selecoes.length; i++) {
             let nome = selecoes[i].nome;
             let token = selecoes[i].nome;
@@ -18,6 +19,7 @@ class MataMata {
             let time = new Selecao(nome, token, vitorias, pontos, empates, derrotas, golsFeito, golsRecebidos);
             this._allTeams.push(time);
         }
+        console.log(this._allTeams);
     }
     get allTeams() {
         return this._allTeams;

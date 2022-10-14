@@ -7,6 +7,7 @@ class MataMata {
     private _fase:string;
     //sempre que receber novos times, nao tera ligacao com as fases anteriores
     public set allTeams(selecoes:Array<Selecao>){
+        this._allTeams= new Array<Selecao>;
         for(let i = 0;i<selecoes.length;i++){
             let nome = selecoes[i].nome;
             let token = selecoes[i].nome;
@@ -19,6 +20,8 @@ class MataMata {
             let time = new Selecao(nome,token,vitorias,pontos,empates,derrotas,golsFeito,golsRecebidos);
             this._allTeams.push(time);
         }
+        console.log(this._allTeams);
+
     }
     public get allTeams(){
         return this._allTeams;
