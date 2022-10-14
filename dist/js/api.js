@@ -34,3 +34,22 @@ async function fetchTeams() {
         console.error(error);
     }
 }
+async function finalSend(finalJson) {
+    const url = 'https://estagio.geopostenergy.com/WorldCup/InsertFinalResult';
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'git-user': 'thalisribeiro',
+                "Content-type": "application/json; charset=UTF-8"
+            },
+            body: finalJson
+        });
+        const data = await response.json();
+        console.log(data);
+        return data.Result;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
