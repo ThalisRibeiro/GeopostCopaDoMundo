@@ -15,6 +15,7 @@ class Selecao {
         this._token = token;
         this._saldoGols = this.golsFeitos - this.golsRecebidos;
     }
+    //Método para receber informação de jogos da fase de grupos, ele soma as pontuações para que no final seja escolhido os times com maiores pontos
     fimDeJogo(pontos, golsFeito, golsSofrido) {
         switch (pontos) {
             case 3:
@@ -36,6 +37,7 @@ class Selecao {
         this._golsRecebidosLastPartida = golsSofrido;
         this.setSaldoGols();
     }
+    //Método para receber informação de jogos do mata mata, no lugar da pontuação recebe se ele passou ou não de fase, além disso recebe quantos gols de penalti fez
     fimDeJogoMata(passou, golsFeito, golsSofrido, golsPenalti = 0) {
         this.passouDeFase = passou;
         if (passou == true)

@@ -26,10 +26,8 @@ class MataMata {
     public get allTeams(){
         return this._allTeams;
     }
+    //Loop que roda todas as partidas entre os times I e I+1
     jogos(){
-        console.log('entramos nas partidas das '+this._fase);        
-        // const historicoJogos = document.querySelector('.HistoricoDeJogos')as HTMLVideoElement;
-        // historicoJogos.innerHTML+=`<div class=${this._fase} id=${this._fase}> </div>`; 
         var partidas:Partida = new Partida();
         for (let index = 0; index < this._allTeams.length; index+=2) 
         {
@@ -37,16 +35,12 @@ class MataMata {
             console.log(this._allTeams[index].nome+' gols = '+this._allTeams[index]._golsFeitosLastPartida + ' '+this._allTeams[index+1].nome+' gols = '+this._allTeams[index+1]._golsFeitosLastPartida);      
             this.MostraHistoricoPartida(index,index+1) 
         }
-        
-        // this.mostraSaldoGols();
-        // this.passaTimesDeFase();
     }
+    //Busca todos os times e retorna somente os times que possuem true na propriedade passouDeFase
     proximaFase():Array<Selecao>{
         console.log('Para proxima fase: ');
-        
         var ganharam: Array<Selecao> = new Array<Selecao>;
         for (let index = 0; index < this._allTeams.length; index++) {
-            //console.log(this._allTeams[index].nome+' passou de fase: '+ this._allTeams[index].passouDeFase);
             
             if (this._allTeams[index].passouDeFase == true)
             {
@@ -59,6 +53,7 @@ class MataMata {
     }
     MostraHistoricoPartida(i:number, x:number){
         let historicoFase;
+        //Decide em qual div vai escrever 
         switch (this._fase) {
             case 'oitavas': historicoFase = document.querySelector(".HistoricoMataMataOit")as HTMLVideoElement; 
                 break;
@@ -78,6 +73,8 @@ class MataMata {
         else
         historicoFase.innerHTML+=`<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida} (${this._allTeams[i].golsPenalti}) X (${this._allTeams[x].golsPenalti}) ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`
     }
+
+    //Escrevem na tabela do html quais times passaram para próxima fase
     mostraProximaFase(confrontos:Array<Selecao>){
         switch (this._fase) {
             case 'oitavas':  this.escreveQuartas(confrontos)
@@ -86,10 +83,7 @@ class MataMata {
             case 'quartas': this.escreveSemi(confrontos)
                 break;
             case 'semi': this.escreveFinais(confrontos)
-                break;
-                case 'finais':
-                break;
-        
+                break;        
             default: 
                 break;
         }

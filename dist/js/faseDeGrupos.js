@@ -7,19 +7,18 @@ class FaseDeGrupos {
         this._alfabeto = [];
         this._alfabeto.push('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H');
     }
+    //recebe as duas strings da api e adiciona no array que possui todos os times 
     salvaTimes(nomes, tokens) {
         var time = new Selecao;
         this._timesColocacao = new Array;
         this._allTeams = new Array;
-        console.log("Chegamos em SalvaTimes");
         for (let index = 0; index < nomes.length; index++) {
-            console.log("Nome " + index + ": ");
             time = new Selecao(nomes[index], tokens[index]);
-            console.log(time.nome);
             this._allTeams.push(time);
         }
-        console.log(this._allTeams);
     }
+    //Como tá na fase de grupos, cada time possui 3 partidas, um contra cada equipe do grupo
+    //primeiro roda os 3 jogos do primeiro time, dps 2 jogos do segundo time (2 pois já possui 1 jogo com o primeiro), e o jogo final entre penúltimo e ultimo do grupo  
     jogos() {
         var partidas = new Partida();
         for (let index = 0; index < this._allTeams.length; index += 4) {
@@ -31,21 +30,11 @@ class FaseDeGrupos {
                 }
             }
         }
-        this.mostraSaldoGols();
         this.passaTimesDeFase();
     }
-    mostraSaldoGols() {
-        for (let index = 0; index < this._allTeams.length; index++) {
-            console.log("Pontos do " + this._allTeams[index].nome + ": " + (this._allTeams[index].pontuacao));
-            console.log("Saldo de gols do " + this._allTeams[index].nome + ": " + (this._allTeams[index].golsFeitos - this._allTeams[index].golsRecebidos));
-        }
-    }
+    //Mostra os times dividos em uma tabela para cada grupo
+    //Z serve para escrever qual grupo vai ser escrito
     mostraTodosTimes() {
-        // console.log("Times na fase de grupo: ");
-        // for(let index = 0; index<32;index++){         
-        //     console.log('Nome '+index+': '+this._allTeams[index].nome);
-        //     console.log('Token '+index+': '+this._allTeams[index].token);
-        // }
         let z = 0;
         for (let index = 0; index < 29; index += 4) {
             const divGrupos = document.querySelector('.FaseDeGrupos');
@@ -89,10 +78,10 @@ class FaseDeGrupos {
                 </tbody>
             </table>`;
             z += 1;
-            console.log('Nome ' + index + ': ' + this._allTeams[index].nome);
-            console.log('Token ' + index + ': ' + this._allTeams[index].token);
         }
     }
+    //Recebe os dois index dos times que jogaram e coloca no html o resultado
+    //Divide entre duas divs para cortar pela metade o tamanho do histórico da fase de grupo
     MostraHistoricoPartida(i, x) {
         let historicoGrupos = document.querySelector('.HistoricoGrupos');
         if (i > 14) {
@@ -117,6 +106,7 @@ class FaseDeGrupos {
             //adicionando a lista dos times que vão para o mata mata
             this._timesQuePassaram.push(grupo[0]);
             this._timesQuePassaram.push(grupo[1]);
+            //Lista da classificação de todos os times
             this._timesColocacao.push(grupo[0]);
             this._timesColocacao.push(grupo[1]);
             this._timesColocacao.push(grupo[2]);
@@ -126,11 +116,11 @@ class FaseDeGrupos {
             z += 1;
         }
     }
+    //Recebe o array de times de um grupo e organiza da maior pontuação para menor
     verificaColocacao(grupo) {
-        // console.log("Entramos no Verifica Colocacao\nGrupo pre sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
         grupo = grupo.sort((x, y) => y.pontuacao - x.pontuacao);
-        // console.log("Grupo pos sorted: "+ grupo[0].nome+ " Pontos: "+ grupo[0].pontuacao+" " + grupo[1].nome+" Pontos: "+ grupo[1].pontuacao+" "+ grupo[2].nome+ " Pontos: "+ grupo[2].pontuacao+" "+ grupo[3].nome+ " Pontos: "+ grupo[3].pontuacao+" ")
         // verificando se não há empates na pontuação
+        //Se possuir ele coloca o time com maior saldo de gols na frente
         for (let index = 0; index < 3; index++) {
             if (grupo[index].pontuacao == grupo[index + 1].pontuacao) {
                 if (grupo[index].saldoGols > grupo[index + 1].saldoGols) {
@@ -144,11 +134,12 @@ class FaseDeGrupos {
             }
         }
     }
+    //Retorna somente os times que passaram para o mata mata, sendo o campeão e o vice de cada grupo
     proximaFase() {
         let confrontos = new Array;
-        console.log('para proxima fase');
         let z = 0;
         //teremos 2 loops,1 pro lado esquerdo e outro pro lado direito da tabela
+        //Ele já organiza que o time campeão A vai jogar contra o vice do grupo B e assim por diante
         for (let index = 0; index < this._timesQuePassaram.length; index++) {
             // console.log('Equipe '+index+ ' '+ this._timesQuePassaram[index].nome);
             confrontos.push(this._timesQuePassaram[index]);
@@ -176,6 +167,8 @@ class FaseDeGrupos {
         this.mostraProximaFase(confrontos);
         return confrontos;
     }
+    //Escreve os confrontos na tabela das Oitavas
+    //Primeira metade no lado esquerdo e segunda metade no lado direito da tabela
     mostraProximaFase(confrontos) {
         for (let index = 0; index < confrontos.length; index++) {
             let proxima;
@@ -193,6 +186,7 @@ class FaseDeGrupos {
             }
         }
     }
+    //Os apagadores sobrescrevem os dados que estavam na html pós jogo para dados zerados, assim quando novos dados forem colocados não de conflito no html
     apagaProgresso() {
         let proxima = document.querySelector('.OitavasLeft');
         proxima.innerHTML = "";

@@ -27,6 +27,7 @@ class Selecao{
     private _passouDeFase: boolean;
     private _golsPenalti: number;
     private _saldoGols: number;
+    //Método para receber informação de jogos da fase de grupos, ele soma as pontuações para que no final seja escolhido os times com maiores pontos
     fimDeJogo(pontos:number, golsFeito:number, golsSofrido:number){
         switch (pontos) {
             case 3: this.vitorias=1;
@@ -41,6 +42,7 @@ class Selecao{
         this.golsFeitos=golsFeito; this.golsRecebidos=golsSofrido; this.pontuacao=pontos; this._golsFeitosLastPartida=golsFeito; this._golsRecebidosLastPartida=golsSofrido;
         this.setSaldoGols()
     }
+    //Método para receber informação de jogos do mata mata, no lugar da pontuação recebe se ele passou ou não de fase, além disso recebe quantos gols de penalti fez
     fimDeJogoMata(passou:boolean, golsFeito:number, golsSofrido:number, golsPenalti:number=0){
         this.passouDeFase=passou;
         if(passou==true)
