@@ -125,6 +125,6 @@ class MataMata {
     escreveFinais(confrontos) {
         let proxima;
         proxima = document.querySelector('.Finais');
-        proxima.innerHTML += `<p> ${confrontos[0].nome} ${confrontos[1].nome}   </p>`;
+        proxima.innerHTML += `<p> ${confrontos[0].nome}</p> <p> ${confrontos[1].nome}   </p>`;
     }
 }
