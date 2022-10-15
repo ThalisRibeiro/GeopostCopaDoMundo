@@ -4,11 +4,12 @@ body{
 h2{
     text-align: center;
     margin: 5px;
+    color: whitesmoke;
 }
 .NomeGrupo{
     text-align: center;
     margin: 5px;
-    color: black;
+    color: whitesmoke;
     
 }
 .FaseDeGrupos{
@@ -50,7 +51,7 @@ td{
     /* display: inline-block; */
     margin-top: 150px;
      width: 1400px;
-     height: 700px;
+     height: 780px;
      margin-right: 0;
      background-image:url("../src/qatar.png");
     /* background-position: 40px ; */
@@ -60,10 +61,18 @@ td{
 }
 .Controles{
     /* float: right; */
-    /* height: 10px; */
+    height: 100px;
     display: inline-block;
-    width: 300px;
-    background-color: antiquewhite;
+    /* width: 300px; */
+    margin-top: 50px;
+
+}
+button{
+    height: 50px;
+    width: 250px;
+    border-style: groove;
+    border: 10px #cc2fcc;
+    border-radius: 10px;
 }
 
 .OitavasLeft{
@@ -89,16 +98,16 @@ td{
 .QuartasRight{
     float: left;
     width: 130px;
+    height: 400px;
     margin-top: 140px;
-    margin-bottom: 160px;
     margin-left: 30px;
 }
 .SemiLeft,.SemiRight{
     float: left;
     width: 100px;
+    height: 350px;
     margin-left: 0px;
     margin-top: 300px;
-    margin-bottom: 160px;
 }
 .SegundoTime{
     margin-bottom: 90px;
