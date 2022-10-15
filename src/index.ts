@@ -10,12 +10,12 @@ let nomes:string[] = new Array;
 var tokens:string[] = new Array;
 load();
 
+//Busca na api os dados dos times
 async function load() 
 {
     teams = await fetchTeams();
     console.log(teams);
     for(let index = 0; index<32;index++){
-        // console.log('Nome '+index+': '+teams[index].Name);
         nomes[index]=teams[index].Name;
         tokens[index]=teams[index].Token;
         console.log('Nome '+index+': '+nomes[index]);
@@ -23,21 +23,13 @@ async function load()
     }
     salvaFaseGrupos(nomes,tokens)
     rodaAllGames();
-    // faseGrupos.jogos(); 
-    // oitavas.allTeams= faseGrupos.proximaFase();
-    // oitavas.jogos();
-    // quartas.allTeams= oitavas.proximaFase();
-    // quartas.jogos();
-    // semi.allTeams = quartas.proximaFase();
-    // semi.jogos();
-    // finais.allTeams = semi.proximaFase();
-    // finais.jogos();
 }
+//pega os dados da api e joga na fase de grupo
 function salvaFaseGrupos(_names:string[], _tokens:string[]) {
     faseGrupos.salvaTimes(_names,_tokens);
-    // shuffleArray(faseGrupos._allTeams);
 }
 
+//muda de forma aleatória os grupos da copa
 function shuffleArray(array:Array<Selecao>) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
