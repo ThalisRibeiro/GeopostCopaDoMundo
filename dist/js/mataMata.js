@@ -69,7 +69,10 @@ class MataMata {
                 historicoFase = document.querySelector(".HistoricoMataMataFin");
                 break;
         }
-        historicoFase.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
+        if (this._allTeams[i]._golsFeitosLastPartida != this._allTeams[x]._golsFeitosLastPartida)
+            historicoFase.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida}  X ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
+        else
+            historicoFase.innerHTML += `<p>${this._allTeams[i].nome}  ${this._allTeams[i]._golsFeitosLastPartida} (${this._allTeams[i].golsPenalti}) X (${this._allTeams[x].golsPenalti}) ${this._allTeams[x]._golsFeitosLastPartida}  ${this._allTeams[x].nome}</p>`;
     }
     mostraProximaFase(confrontos) {
         switch (this._fase) {
