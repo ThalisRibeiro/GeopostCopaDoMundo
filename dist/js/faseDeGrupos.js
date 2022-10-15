@@ -214,7 +214,7 @@ class FaseDeGrupos {
         let historicoGrupos = document.querySelector('.HistoricoGrupos');
         historicoGrupos.innerHTML = "<h2> Fase de Grupos</h2>";
         historicoGrupos = document.querySelector('.HistoricoGrupos2');
-        historicoGrupos.innerHTML = "<h2> </h2>";
+        historicoGrupos.innerHTML = "<h2> Fase de Grupos </h2>";
         historicoGrupos = document.querySelector('.HistoricoMataMataOit');
         historicoGrupos.innerHTML = "<h2> Oitavas</h2>";
         historicoGrupos = document.querySelector('.HistoricoMataMataQua');
