@@ -17,12 +17,13 @@ h2{
     
 }
 .FaseDeGrupos{
+    float: left;
     border: 10px black;
     border-color: black;
     /* background-color: blue; */
     display: inline-table;
     margin: 10;
-    width: 400px;
+    width: 460px;
 }
 thead{
     background-color: #660066;
@@ -43,6 +44,9 @@ td{
     color: rgb(110, 255, 199);
     background-color: purple	;
 }
+.HistoricoDeJogos{
+    width: 1887px;
+}
 .HistoricoGrupos,.HistoricoGrupos2,.HistoricoMataMataOit,.HistoricoMataMataQua,.HistoricoMataMataSemi,.HistoricoMataMataFin{
     text-align: center;
     border: 3px solid black;
@@ -58,9 +62,9 @@ td{
     height: 780px;
 }
 .Imagem{
-    float: right;
+    float: left;
     /* display: inline-block; */
-    margin-top: 65px;
+    margin-top: 62px;
      width: 1400px;
      height: 780px;
      margin-right: 0;
