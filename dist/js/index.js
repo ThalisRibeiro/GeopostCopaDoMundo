@@ -5,6 +5,7 @@ let quartas = new MataMata('quartas');
 let semi = new MataMata('semi');
 let finais = new MataMata('finais');
 let faseGrupos = new FaseDeGrupos();
+let cleaner = new Cleaner();
 let nomes = new Array;
 var tokens = new Array;
 load();
@@ -51,9 +52,9 @@ function rodaNewGame() {
     rodaAllGames();
 }
 function apagaAllProgress() {
-    faseGrupos.apagaProgresso();
-    faseGrupos.apagaHistorico();
-    faseGrupos.apagaTabela();
+    cleaner.apagaProgresso();
+    cleaner.apagaHistorico();
+    cleaner.apagaTabela();
 }
 async function enviaFim() {
     let dados = new dadosFinais(finais.allTeams[0].token, finais.allTeams[1].token, finais.allTeams[0]._golsFeitosLastPartida, finais.allTeams[1]._golsFeitosLastPartida, finais.allTeams[0].golsPenalti, finais.allTeams[1].golsPenalti);
