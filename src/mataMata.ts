@@ -78,12 +78,12 @@ class MataMata {
     //Escrevem na tabela do html quais times passaram para próxima fase
     mostraProximaFase(confrontos:Array<Selecao>){
         switch (this._fase) {
-            case 'oitavas':  this.escreveQuartas(confrontos)
+            case 'oitavas':  /*this.escreveQuartas(confrontos)*/ this.escreveProximaFase(confrontos,'Quartas') 
                 break;
                 
-            case 'quartas': this.escreveSemi(confrontos)
+            case 'quartas': /*this.escreveSemi(confrontos)*/ this.escreveProximaFase(confrontos,'Semi')
                 break;
-            case 'semi': this.escreveFinais(confrontos)
+            case 'semi':  this.escreveFinais(confrontos)
                 break;        
             default: 
                 break;
@@ -147,6 +147,24 @@ class MataMata {
         }
     }
    
+    escreveProximaFase(confrontos:Array<Selecao>, fase:string){
+        for (let index = 0; index < confrontos.length; index++) {
+            let proxima;
+            if (index<confrontos.length/2) {
+                proxima = document.querySelector(`.${fase}Left`)as HTMLVideoElement; 
+            }
+            else{
+                proxima = document.querySelector(`.${fase}Right`)as HTMLVideoElement; 
+            }
+            if ((index%2)==0) {
+                proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
+            }
+            else{
+                proxima.innerHTML+=`<p class="SegundoTime${fase}"> ${confrontos[index].nome}</p>`;
+            }
+        }
+    }
+
 
     escreveQuartas(confrontos:Array<Selecao>){
         for (let index = 0; index < confrontos.length; index++) {

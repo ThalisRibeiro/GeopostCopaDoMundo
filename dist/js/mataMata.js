@@ -76,11 +76,11 @@ class MataMata {
     //Escrevem na tabela do html quais times passaram para próxima fase
     mostraProximaFase(confrontos) {
         switch (this._fase) {
-            case 'oitavas':
-                this.escreveQuartas(confrontos);
+            case 'oitavas': /*this.escreveQuartas(confrontos)*/
+                this.escreveProximaFase(confrontos, 'Quartas');
                 break;
-            case 'quartas':
-                this.escreveSemi(confrontos);
+            case 'quartas': /*this.escreveSemi(confrontos)*/
+                this.escreveProximaFase(confrontos, 'Semi');
                 break;
             case 'semi':
                 this.escreveFinais(confrontos);
@@ -105,26 +105,26 @@ class MataMata {
                 break;
         }
     }
-    escreveResultadoFinais() {
-        cleaner.clearFinais();
-        this.escreveGolsFinal();
-    }
-    escreveGolsFinal() {
-        let proxima;
-        proxima = document.querySelector('.Finais');
-        proxima.innerHTML += `<p> ${this._allTeams[0].nome}  ${this._allTeams[0]._golsFeitosLastPartida}</p> <p> ${this._allTeams[1].nome} ${this._allTeams[1]._golsFeitosLastPartida}   </p>`;
-    }
-    escreveResultadoSemi() {
-        cleaner.clearSemi();
-        this.escreveGolsTabela('Semi');
+    escreveResultadoOitavas() {
+        cleaner.clearOitavas();
+        this.escreveGolsTabela('Oitavas');
     }
     escreveResultadoQuartas() {
         cleaner.clearQuartas();
         this.escreveGolsTabela('Quartas');
     }
-    escreveResultadoOitavas() {
-        cleaner.clearOitavas();
-        this.escreveGolsTabela('Oitavas');
+    escreveResultadoFinais() {
+        cleaner.clearFinais();
+        this.escreveGolsFinal();
+    }
+    escreveResultadoSemi() {
+        cleaner.clearSemi();
+        this.escreveGolsTabela('Semi');
+    }
+    escreveGolsFinal() {
+        let proxima;
+        proxima = document.querySelector('.Finais');
+        proxima.innerHTML += `<p> ${this._allTeams[0].nome}  ${this._allTeams[0]._golsFeitosLastPartida}</p> <p> ${this._allTeams[1].nome} ${this._allTeams[1]._golsFeitosLastPartida}   </p>`;
     }
     escreveGolsTabela(fase) {
         for (let index = 0; index < this._allTeams.length; index++) {
@@ -143,28 +143,23 @@ class MataMata {
             }
         }
     }
-    // escreveSemiGols(confrontos:Array<Selecao>){
-    //     for (let index = 0; index < confrontos.length; index++) {
-    //         let proxima;
-    //         if (index<confrontos.length/2) {
-    //             proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
-    //         }
-    //         else{
-    //             proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
-    //         }
-    //         if ((index%2)==0) {
-    //             proxima.innerHTML+=`<p> ${confrontos[index].nome} ${confrontos[index]._golsFeitosLastPartida}</p>`;
-    //         }
-    //         else{
-    //             proxima.innerHTML+=`<p class="SegundoTimeSemi"> ${confrontos[index].nome} ${confrontos[index]._golsFeitosLastPartida}</p>`;
-    //         }
-    //     }
-    // }
-    // escreveFinaisGols(confrontos:Array<Selecao>){
-    //         let proxima;
-    //         proxima = document.querySelector('.Finais')as HTMLVideoElement; 
-    //         proxima.innerHTML+=`<p> ${confrontos[0].nome}</p> <p> ${confrontos[1].nome}   </p>`;   
-    // }
+    escreveProximaFase(confrontos, fase) {
+        for (let index = 0; index < confrontos.length; index++) {
+            let proxima;
+            if (index < confrontos.length / 2) {
+                proxima = document.querySelector(`.${fase}Left`);
+            }
+            else {
+                proxima = document.querySelector(`.${fase}Right`);
+            }
+            if ((index % 2) == 0) {
+                proxima.innerHTML += `<p> ${confrontos[index].nome}</p>`;
+            }
+            else {
+                proxima.innerHTML += `<p class="SegundoTime${fase}"> ${confrontos[index].nome}</p>`;
+            }
+        }
+    }
     escreveQuartas(confrontos) {
         for (let index = 0; index < confrontos.length; index++) {
             let proxima;
