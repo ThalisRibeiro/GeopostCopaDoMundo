@@ -2,7 +2,7 @@ class MataMata {
     constructor(fase:string) {
         this._fase=fase;
     }
-
+    private _cleaner:Cleaner = new Cleaner();
     private _allTeams:Array<Selecao> = new Array<Selecao>;
     private _fase:string;
     //sempre que receber novos times, nao tera ligacao com as fases anteriores
@@ -35,6 +35,7 @@ class MataMata {
             console.log(this._allTeams[index].nome+' gols = '+this._allTeams[index]._golsFeitosLastPartida + ' '+this._allTeams[index+1].nome+' gols = '+this._allTeams[index+1]._golsFeitosLastPartida);      
             this.MostraHistoricoPartida(index,index+1) 
         }
+        this.mostraResultadosFase();
     }
     //Busca todos os times e retorna somente os times que possuem true na propriedade passouDeFase
     proximaFase():Array<Selecao>{
@@ -47,7 +48,7 @@ class MataMata {
                 ganharam.push(this._allTeams[index]);   
                 console.log(this._allTeams[index]);
             }
-        }
+        }        
         this.mostraProximaFase(ganharam)
         return ganharam;
     }
@@ -89,6 +90,64 @@ class MataMata {
         }
         
     }
+
+    mostraResultadosFase(){
+        switch (this._fase) {
+            case 'oitavas':  this.escreveResultadoOitavas()
+                break;
+                
+            case 'quartas': this.escreveResultadoQuartas()
+                break;
+            case 'semi': this.escreveResultadoSemi()
+                break;        
+            default: this.escreveResultadoFinais()
+                break;
+        }
+        
+    }
+    escreveResultadoOitavas() {
+        cleaner.clearOitavas();
+        this.escreveGolsTabela('Oitavas')
+    }
+    
+    escreveResultadoQuartas() {
+        cleaner.clearQuartas();
+        this.escreveGolsTabela('Quartas');
+    }
+    escreveResultadoFinais() {
+        cleaner.clearFinais()
+        this.escreveGolsFinal();
+    }
+    escreveResultadoSemi() {
+        cleaner.clearSemi()
+        this.escreveGolsTabela('Semi');
+    }
+    escreveGolsFinal() {
+        let proxima;
+            proxima = document.querySelector('.Finais')as HTMLVideoElement; 
+            proxima.innerHTML+=`<p> ${this._allTeams[0].nome}  ${this._allTeams[0]._golsFeitosLastPartida}</p> <p> ${this._allTeams[1].nome} ${this._allTeams[1]._golsFeitosLastPartida}   </p>`; 
+    }
+
+
+    escreveGolsTabela(fase:string){
+        for (let index = 0; index < this._allTeams.length; index++) {
+            let proxima;
+            if (index<this._allTeams.length/2) {
+                proxima = document.querySelector(`.${fase}Left`)as HTMLVideoElement; 
+            }
+            else{
+                proxima = document.querySelector(`.${fase}Right`)as HTMLVideoElement; 
+            }
+            if ((index%2)==0) {
+                proxima.innerHTML+=`<p> ${this._allTeams[index].nome} ${this._allTeams[index]._golsFeitosLastPartida}</p>`;
+            }
+            else{
+                proxima.innerHTML+=`<p class="SegundoTime${fase}"> ${this._allTeams[index].nome } ${this._allTeams[index]._golsFeitosLastPartida}</p>`;
+            }
+        }
+    }
+   
+
     escreveQuartas(confrontos:Array<Selecao>){
         for (let index = 0; index < confrontos.length; index++) {
             let proxima;
@@ -102,7 +161,7 @@ class MataMata {
                 proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
             }
             else{
-                proxima.innerHTML+=`<p class="SegundoTimeQuarta"> ${confrontos[index].nome}</p>`;
+                proxima.innerHTML+=`<p class="SegundoTimeQuartas"> ${confrontos[index].nome}</p>`;
             }
         }
     }

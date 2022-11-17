@@ -1,6 +1,7 @@
 "use strict";
 class MataMata {
     constructor(fase) {
+        this._cleaner = new Cleaner();
         this._allTeams = new Array;
         this._fase = fase;
     }
@@ -32,6 +33,7 @@ class MataMata {
             console.log(this._allTeams[index].nome + ' gols = ' + this._allTeams[index]._golsFeitosLastPartida + ' ' + this._allTeams[index + 1].nome + ' gols = ' + this._allTeams[index + 1]._golsFeitosLastPartida);
             this.MostraHistoricoPartida(index, index + 1);
         }
+        this.mostraResultadosFase();
     }
     //Busca todos os times e retorna somente os times que possuem true na propriedade passouDeFase
     proximaFase() {
@@ -87,6 +89,82 @@ class MataMata {
                 break;
         }
     }
+    mostraResultadosFase() {
+        switch (this._fase) {
+            case 'oitavas':
+                this.escreveResultadoOitavas();
+                break;
+            case 'quartas':
+                this.escreveResultadoQuartas();
+                break;
+            case 'semi':
+                this.escreveResultadoSemi();
+                break;
+            default:
+                this.escreveResultadoFinais();
+                break;
+        }
+    }
+    escreveResultadoFinais() {
+        cleaner.clearFinais();
+        this.escreveGolsFinal();
+    }
+    escreveGolsFinal() {
+        let proxima;
+        proxima = document.querySelector('.Finais');
+        proxima.innerHTML += `<p> ${this._allTeams[0].nome}  ${this._allTeams[0]._golsFeitosLastPartida}</p> <p> ${this._allTeams[1].nome} ${this._allTeams[1]._golsFeitosLastPartida}   </p>`;
+    }
+    escreveResultadoSemi() {
+        cleaner.clearSemi();
+        this.escreveGolsTabela('Semi');
+    }
+    escreveResultadoQuartas() {
+        cleaner.clearQuartas();
+        this.escreveGolsTabela('Quartas');
+    }
+    escreveResultadoOitavas() {
+        cleaner.clearOitavas();
+        this.escreveGolsTabela('Oitavas');
+    }
+    escreveGolsTabela(fase) {
+        for (let index = 0; index < this._allTeams.length; index++) {
+            let proxima;
+            if (index < this._allTeams.length / 2) {
+                proxima = document.querySelector(`.${fase}Left`);
+            }
+            else {
+                proxima = document.querySelector(`.${fase}Right`);
+            }
+            if ((index % 2) == 0) {
+                proxima.innerHTML += `<p> ${this._allTeams[index].nome} ${this._allTeams[index]._golsFeitosLastPartida}</p>`;
+            }
+            else {
+                proxima.innerHTML += `<p class="SegundoTime${fase}"> ${this._allTeams[index].nome} ${this._allTeams[index]._golsFeitosLastPartida}</p>`;
+            }
+        }
+    }
+    // escreveSemiGols(confrontos:Array<Selecao>){
+    //     for (let index = 0; index < confrontos.length; index++) {
+    //         let proxima;
+    //         if (index<confrontos.length/2) {
+    //             proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
+    //         }
+    //         else{
+    //             proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
+    //         }
+    //         if ((index%2)==0) {
+    //             proxima.innerHTML+=`<p> ${confrontos[index].nome} ${confrontos[index]._golsFeitosLastPartida}</p>`;
+    //         }
+    //         else{
+    //             proxima.innerHTML+=`<p class="SegundoTimeSemi"> ${confrontos[index].nome} ${confrontos[index]._golsFeitosLastPartida}</p>`;
+    //         }
+    //     }
+    // }
+    // escreveFinaisGols(confrontos:Array<Selecao>){
+    //         let proxima;
+    //         proxima = document.querySelector('.Finais')as HTMLVideoElement; 
+    //         proxima.innerHTML+=`<p> ${confrontos[0].nome}</p> <p> ${confrontos[1].nome}   </p>`;   
+    // }
     escreveQuartas(confrontos) {
         for (let index = 0; index < confrontos.length; index++) {
             let proxima;
@@ -100,7 +178,7 @@ class MataMata {
                 proxima.innerHTML += `<p> ${confrontos[index].nome}</p>`;
             }
             else {
-                proxima.innerHTML += `<p class="SegundoTimeQuarta"> ${confrontos[index].nome}</p>`;
+                proxima.innerHTML += `<p class="SegundoTimeQuartas"> ${confrontos[index].nome}</p>`;
             }
         }
     }
