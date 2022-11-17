@@ -166,41 +166,41 @@ class MataMata {
     }
 
 
-    escreveQuartas(confrontos:Array<Selecao>){
-        for (let index = 0; index < confrontos.length; index++) {
-            let proxima;
-            if (index<confrontos.length/2) {
-                proxima = document.querySelector('.QuartasLeft')as HTMLVideoElement; 
-            }
-            else{
-                proxima = document.querySelector('.QuartasRight')as HTMLVideoElement; 
-            }
-            if ((index%2)==0) {
-                proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
-            }
-            else{
-                proxima.innerHTML+=`<p class="SegundoTimeQuartas"> ${confrontos[index].nome}</p>`;
-            }
-        }
-    }
+    // escreveQuartas(confrontos:Array<Selecao>){
+    //     for (let index = 0; index < confrontos.length; index++) {
+    //         let proxima;
+    //         if (index<confrontos.length/2) {
+    //             proxima = document.querySelector('.QuartasLeft')as HTMLVideoElement; 
+    //         }
+    //         else{
+    //             proxima = document.querySelector('.QuartasRight')as HTMLVideoElement; 
+    //         }
+    //         if ((index%2)==0) {
+    //             proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
+    //         }
+    //         else{
+    //             proxima.innerHTML+=`<p class="SegundoTimeQuartas"> ${confrontos[index].nome}</p>`;
+    //         }
+    //     }
+    // }
 
-    escreveSemi(confrontos:Array<Selecao>){
-        for (let index = 0; index < confrontos.length; index++) {
-            let proxima;
-            if (index<confrontos.length/2) {
-                proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
-            }
-            else{
-                proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
-            }
-            if ((index%2)==0) {
-                proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
-            }
-            else{
-                proxima.innerHTML+=`<p class="SegundoTimeSemi"> ${confrontos[index].nome}</p>`;
-            }
-        }
-    }
+    // escreveSemi(confrontos:Array<Selecao>){
+    //     for (let index = 0; index < confrontos.length; index++) {
+    //         let proxima;
+    //         if (index<confrontos.length/2) {
+    //             proxima = document.querySelector('.SemiLeft')as HTMLVideoElement; 
+    //         }
+    //         else{
+    //             proxima = document.querySelector('.SemiRight')as HTMLVideoElement; 
+    //         }
+    //         if ((index%2)==0) {
+    //             proxima.innerHTML+=`<p> ${confrontos[index].nome}</p>`;
+    //         }
+    //         else{
+    //             proxima.innerHTML+=`<p class="SegundoTimeSemi"> ${confrontos[index].nome}</p>`;
+    //         }
+    //     }
+    // }
     escreveFinais(confrontos:Array<Selecao>){
             let proxima;
             proxima = document.querySelector('.Finais')as HTMLVideoElement; 
