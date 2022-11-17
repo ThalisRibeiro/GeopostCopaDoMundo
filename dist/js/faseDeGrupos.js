@@ -182,7 +182,7 @@ class FaseDeGrupos {
                 proxima.innerHTML += `<p> ${confrontos[index].nome}</p>`;
             }
             else {
-                proxima.innerHTML += `<p class="SegundoTime"> ${confrontos[index].nome}</p>`;
+                proxima.innerHTML += `<p class="SegundoTimeOitavas"> ${confrontos[index].nome}</p>`;
             }
         }
     }
